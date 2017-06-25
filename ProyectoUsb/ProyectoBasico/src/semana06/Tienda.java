@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class Tienda extends JFrame implements ActionListener {
@@ -77,7 +78,7 @@ public class Tienda extends JFrame implements ActionListener {
 	public static double fondo4 = 25.0;
 	
 	//Conf. Obsequio
-	//Cantidad mínima
+	//Cantidad minima
 	public static int cantidadMinima = 10;
 	// Obsequio
 	public static String obsequio = "USB";
@@ -297,9 +298,9 @@ public class Tienda extends JFrame implements ActionListener {
 	
 	public void actionPerformedmntmGenerarReportes(ActionEvent e) {
 		//Declarar el name de la ventana 
-		GenerarReportes d;
+		GenRepor d;
 		//Crear la ventana de vantas
-		d = new GenerarReportes();
+		d = new GenRepor();
 		//Centrar la ventana
 	
 		//Hacer visible
@@ -357,5 +358,10 @@ public class Tienda extends JFrame implements ActionListener {
 	
 	public static void Imprimir( JTextArea txtS, String cad){
 		txtS.append("       "+ cad + "\n");
+	}
+	
+	public static void focusSelectAll( JTextField text){
+		text.selectAll();
+		text.requestFocus();
 	}
 }

@@ -134,35 +134,36 @@ public class DiaologoConsultar extends JDialog implements ActionListener {
 
 	protected void actionPerformedComboBox(ActionEvent arg0) {
 		int cod = cboCodigo.getSelectedIndex();
-		if (cod == 0) {
+		switch (cod) {
+		case 0:
 			textModelo.setText(Tienda.modelo0);
 			textprecio.setText(Tienda.precio0 +"");
 			textAncho.setText(Tienda.ancho0 +"");
 			textAlto.setText(Tienda.alto0 +"");
 			textFondo.setText(Tienda.fondo0 +"");
-		    
-		} else if (cod == 1) {
-			
+			break;
+		case 1:	
 			textModelo.setText(Tienda.modelo1);
 			textprecio.setText(Tienda.precio1 +"");
 			textAncho.setText(Tienda.ancho1 +"");
 			textAlto.setText(Tienda.alto1 +"");
 			textFondo.setText(Tienda.fondo1 +"");
-		} else if (cod == 2) {
+			break;
+		case 2:
 			textModelo.setText(Tienda.modelo2);
 			textprecio.setText(Tienda.precio2 +"");
 			textAncho.setText(Tienda.ancho2 +"");
 			textAlto.setText(Tienda.alto2 +"");
 			textFondo.setText(Tienda.fondo2 +"");
-		}
-		
-		else if (cod == 3) {
+			break;
+		case 3:
 			textModelo.setText(Tienda.modelo3);
 			textprecio.setText(Tienda.precio3 +"");
 			textAncho.setText(Tienda.ancho3 +"");
 			textAlto.setText(Tienda.alto3 +"");
 			textFondo.setText(Tienda.fondo3 +"");
-		}else {
+			break;
+		default:
 			textModelo.setText(Tienda.modelo4);
 			textprecio.setText(Tienda.precio4 +"");
 			textAncho.setText(Tienda.ancho4 +"");

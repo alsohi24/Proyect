@@ -27,6 +27,8 @@ public class Vender extends JDialog implements ActionListener{
 	private JButton btnCerrar; 
 	private JButton btnVender;
 	private JComboBox comboBox;
+	private JScrollPane scrollPane;
+	private JTextArea txtS;
 	/**
 	 * Launch the application.
 	 */
@@ -106,50 +108,56 @@ public class Vender extends JDialog implements ActionListener{
 	public void actionPerformedbtnCerrar(ActionEvent e) {
 		dispose();
 	}
-
+	
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCerrar) {
 			actionPerformedbtnCerrar(e);
 		}
 		if (e.getSource() == btnVender) {
-			actionPerformedbtnVender(e);
+			actionPerformedbtnVender(e);			
 		}
 		if (e.getSource() == comboBox) {
 			actionPerformedComboBox(e);
 		}
 		
 	}
+	
+	
 
 	public void actionPerformedComboBox(ActionEvent arg0) {
 		cod = comboBox.getSelectedIndex();
 		
 		if (cod == 0) {
 			textPrecio.setText(Tienda.precio0 + "");
+			Tienda.focusSelectAll(textCantidad);
 		} else if (cod == 1) {
 			textPrecio.setText(Tienda.precio1 + "");
+			Tienda.focusSelectAll(textCantidad);
 		} else if (cod == 2) {
 			textPrecio.setText(Tienda.precio2 + "");
+			Tienda.focusSelectAll(textCantidad);
 		} else if (cod == 3) {
 			textPrecio.setText(Tienda.precio3 + "");
+			Tienda.focusSelectAll(textCantidad);
 		} else {
 			textPrecio.setText(Tienda.precio4 + "");
+			Tienda.focusSelectAll(textCantidad);
 		}
 	}
 
 	double icom, ides, ipag;
 	int can, cod;
-	private JScrollPane scrollPane;
-	private JTextArea txtS;
-
+	
 	public void actionPerformedbtnVender(ActionEvent arg0) {
 		
-
 		ingresardatos();
 		calcularimportecompra();
+		contAcum();
 		calculardescuento();
 		calcularpagar();
 		mostrarresultados();
-
+	
 	}
 
 	void ingresardatos() {
@@ -188,6 +196,35 @@ public class Vender extends JDialog implements ActionListener{
 		else
 			ides = Tienda.porcentaje4 / 100 * icom;
 	}
+	
+	void contAcum(){
+		switch (cod) {
+		case 0:
+			GenRepor.totMaV1 += can;
+			GenRepor.totVen1++;
+			GenRepor.icomAcu1 += icom;
+			break;
+		case 1:
+			GenRepor.totMaV2 += can;
+			GenRepor.totVen2++;
+			GenRepor.icomAcu2 += icom;
+			break;
+		case 2:
+			GenRepor.totMaV3 += can;
+			GenRepor.totVen3++;
+			GenRepor.icomAcu3 += icom;
+			break;
+		case 3:
+			GenRepor.totMaV4 += can;
+			GenRepor.totVen4++;
+			GenRepor.icomAcu4 += icom;
+			break;
+		default:
+			GenRepor.totMaV5 += can;
+			GenRepor.totVen5++;
+			GenRepor.icomAcu5 += icom;
+		}
+	}
 
 	void calcularpagar() {
 		ipag = icom - ides;
@@ -204,4 +241,6 @@ public class Vender extends JDialog implements ActionListener{
 		Tienda.Imprimir(txtS, "Premio Sorpresa     :	" + Tienda.premioSorpresa);
 
 	}
+	
+	
 }

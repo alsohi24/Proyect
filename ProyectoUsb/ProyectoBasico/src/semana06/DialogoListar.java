@@ -89,7 +89,7 @@ public class DialogoListar extends JDialog implements ActionListener {
 	}
 	
 	void Lista(){
-		txtS.setText("     "+"Listado de libros" + "\n\n");
+		txtS.setText("     "+"Listado de Maletas" + "\n\n");
 
 		Tienda.Imprimir(txtS, "Codigo :" + Tienda.codigo0);
 		Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo0);
