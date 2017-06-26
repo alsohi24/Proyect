@@ -15,6 +15,7 @@ import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import java.awt.Color;
 
 public class GenRepor extends JFrame implements ActionListener{
 
@@ -45,6 +46,7 @@ public class GenRepor extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public GenRepor() {
+		setBackground(Color.GRAY);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,18 +54,18 @@ public class GenRepor extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		
 		JLabel lblGenerarReporte = new JLabel("Generar Reporte");
-		lblGenerarReporte.setBounds(10, 19, 104, 14);
+		lblGenerarReporte.setBounds(108, 0, 104, 20);
 		contentPane.add(lblGenerarReporte);
 		
 		comboBox = new JComboBox();
 		comboBox.addActionListener(this);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventas por maleta", "Maletas con venta optima ", "Maletas con precios menores al precio promedio", "Maletas con precios mayores al precio promedio", "Precios menor, mayor y promedio"}));
-		comboBox.setBounds(124, 16, 174, 20);
+		comboBox.setBounds(10, 27, 301, 20);
 		contentPane.add(comboBox);
 		
 		btnCerrar = new JButton("Cerrar");
 		btnCerrar.addActionListener(this);
-		btnCerrar.setBounds(321, 11, 89, 31);
+		btnCerrar.setBounds(321, 11, 89, 36);
 		contentPane.add(btnCerrar);
 		
 		scrollPane = new JScrollPane();
