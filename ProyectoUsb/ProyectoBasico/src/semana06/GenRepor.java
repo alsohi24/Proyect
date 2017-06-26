@@ -383,18 +383,18 @@ public class GenRepor extends JFrame implements ActionListener {
 		txtS.setText("     " + "promPedio, maximos y  minimos" + "\n\n");
 		Tienda.Imprimir(txtS, "Precio mayor:  " + preMay);
 		Tienda.Imprimir(txtS, "Precio menor:  " + preMen);
-		Tienda.Imprimir(txtS, "promPedio :" + promP + "\n");
+		Tienda.Imprimir(txtS, "Promedio del preicio : " + promP + "\n");
 		
-		Tienda.Imprimir(txtS, "Precio mayor:  " + anMay);
-		Tienda.Imprimir(txtS, "Precio menor:  " + anMen);
-		Tienda.Imprimir(txtS, "promPedio :" + promAn + "\n");
+		Tienda.Imprimir(txtS, "Ancho mayor:  " + anMay);
+		Tienda.Imprimir(txtS, "Ancho menor:  " + anMen);
+		Tienda.Imprimir(txtS, "Promedio del Ancho : " + promAn + "\n");
 		
-		Tienda.Imprimir(txtS, "Precio mayor:  " + alMay);
-		Tienda.Imprimir(txtS, "Precio menor:  " + alMen);
-		Tienda.Imprimir(txtS, "promPedio :" + promAl + "\n");
+		Tienda.Imprimir(txtS, "Alto mayor:  " + alMay);
+		Tienda.Imprimir(txtS, "Alto menor:  " + alMen);
+		Tienda.Imprimir(txtS, "Promedio del Alto : " + promAl + "\n");
 		
-		Tienda.Imprimir(txtS, "Precio mayor:  " + fonMay);
-		Tienda.Imprimir(txtS, "Precio menor:  " + fonMen);
-		Tienda.Imprimir(txtS, "promPedio :" + promFon + "\n");
+		Tienda.Imprimir(txtS, "Fondo mayor:  " + fonMay);
+		Tienda.Imprimir(txtS, "Fondo menor:  " + fonMen);
+		Tienda.Imprimir(txtS, "Promedio del Fondo : " + promFon + "\n");
 	}
 }
