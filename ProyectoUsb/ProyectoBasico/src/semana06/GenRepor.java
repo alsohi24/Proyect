@@ -71,6 +71,7 @@ public class GenRepor extends JFrame implements ActionListener{
 		contentPane.add(scrollPane);
 		
 		txtS = new JTextArea();
+		txtS.setEditable(false);
 		scrollPane.setViewportView(txtS);
 	}
 	
@@ -100,11 +101,14 @@ public class GenRepor extends JFrame implements ActionListener{
 		switch(cod){
 		case 0 : 
 			totalDeVentas();
-			break;
-			
+			break;			
 		case 1 :	
 			 malVenOp();
-		default:
+			 break;
+		case 2 :
+			menAlProm();
+			break;
+		default:	
 			mayAlProm();
 		}
 	}
@@ -136,7 +140,7 @@ public class GenRepor extends JFrame implements ActionListener{
 			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo4);
 			Tienda.Imprimir(txtS,"Modelo  :" + Tienda.modelo4);
 			Tienda.Imprimir(txtS,"Cantidad total de maletas vendidas  : " + totMaV5 + "\n");
-		}else{
+		}if(true){
 			Tienda.Imprimir(txtS, "Funciona");
 		}
 	}
@@ -181,19 +185,43 @@ public class GenRepor extends JFrame implements ActionListener{
 		txtS.setText("     "+"Precios mayores al promedio" + "\n\n");
 		if(prom < Tienda.precio0){
 			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo0);
-			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio0+ "\n");			
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio0 + "\n");			
 		}if(prom < Tienda.precio1){
 			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo1);
-			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio1+ "\n");			
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio1 + "\n");			
 		}if(prom < Tienda.precio2){
 			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo2);
-			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio2+ "\n");			
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio2 + "\n");			
 		}if(prom < Tienda.precio3){
 			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo3);
-			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio3+ "\n");			
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio3 + "\n");			
 		}if(prom < Tienda.precio4){
 			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo4);
-			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio4+ "\n");			
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio4 + "\n");			
 		}
+		Tienda.Imprimir(txtS,"Promedio :" + prom + "\n");
+	}
+	
+	void menAlProm(){
+		prom = (Tienda.precio0 + Tienda.precio1 + Tienda.precio2 +Tienda.precio3
+				+ Tienda.precio4)/5;
+		txtS.setText("     "+"Precios menores al promedio" + "\n\n");
+		if(prom > Tienda.precio0){
+			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo0);
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio0 + "\n");			
+		}if(prom > Tienda.precio1){
+			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo1);
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio1 + "\n");			
+		}if(prom > Tienda.precio2){
+			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo2);
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio2 + "\n");			
+		}if(prom > Tienda.precio3){
+			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo3);
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio3 + "\n");			
+		}if(prom > Tienda.precio4){
+			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo4);
+			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio4 + "\n");			
+		}
+		Tienda.Imprimir(txtS,"Promedio :" + prom + "\n");
 	}
 }

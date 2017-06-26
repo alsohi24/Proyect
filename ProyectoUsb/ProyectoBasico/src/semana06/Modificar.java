@@ -304,14 +304,14 @@ public class Modificar extends JDialog implements ActionListener {
 			Tienda.ancho2 = Double.parseDouble(textAncho.getText());
 			Tienda.alto2 = Double.parseDouble(textAlto.getText());
 			Tienda.fondo2 = Double.parseDouble(textFondo.getText());
-
+			break;
 		case 3:
 			Tienda.modelo3 = textModelo.getText();
 			Tienda.precio3 = Double.parseDouble(textprecio.getText());
 			Tienda.ancho3 = Double.parseDouble(textAncho.getText());
 			Tienda.alto3 = Double.parseDouble(textAlto.getText());
 			Tienda.fondo3 = Double.parseDouble(textFondo.getText());
-
+			break;
 		default:
 			Tienda.modelo4 = textModelo.getText();
 			Tienda.precio4 = Double.parseDouble(textprecio.getText());
