@@ -37,6 +37,8 @@ public class Tienda extends JFrame implements ActionListener {
 	private JMenuItem mntmConfigurarLaCantidad;
 	private JMenuItem mntmConfigurarPremioSorpresa;
 	
+	
+	
 	//Datos del primer modelo 
 	public static String codigo0 = "MT0";
 	public static String modelo0 = "Aviator";
@@ -96,11 +98,6 @@ public class Tienda extends JFrame implements ActionListener {
 	public static int numeroClientePremiado = 5;
 	// Premio sorpresa
 	public static String premioSorpresa = "Una agenda";
-	
-	
-	//Mayores y menores
-	public static double num;
-
 
 
 		
