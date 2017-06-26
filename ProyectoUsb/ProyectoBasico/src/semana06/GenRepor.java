@@ -60,8 +60,8 @@ public class GenRepor extends JFrame implements ActionListener {
 		comboBox = new JComboBox();
 		comboBox.addActionListener(this);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Ventas por maleta", "Maletas con venta optima ",
-				"Maletas con precios menores al precio promedio", "Maletas con precios mayores al precio promedio",
-				"Precios menor, mayor y promedio" }));
+				"Maletas con precios menores al precio promPedio", "Maletas con precios mayores al precio promPedio",
+				"Precios menor, mayor y promPedio" }));
 		comboBox.setBounds(10, 27, 301, 20);
 		contentPane.add(comboBox);
 
@@ -96,8 +96,10 @@ public class GenRepor extends JFrame implements ActionListener {
 	public static int totVen1, totVen2, totVen3, totVen4, totVen5, totMaV1, totMaV2, totMaV3, totMaV4, totMaV5;
 	public static double icomAcu1, icomAcu2, icomAcu3, icomAcu4, icomAcu5,
 
-			prom = (Tienda.precio0 + Tienda.precio1 + Tienda.precio2 + Tienda.precio3 + Tienda.precio4) / 5;
-
+			promP = (Tienda.precio0 + Tienda.precio1 + Tienda.precio2 + Tienda.precio3 + Tienda.precio4) / 5,
+			promAn = (Tienda.ancho0 + Tienda.ancho1 + Tienda.ancho2 + Tienda.ancho3 + Tienda.ancho4) / 5,
+			promAl = (Tienda.alto0 + Tienda.alto1 + Tienda.alto2 + Tienda.alto3 + Tienda.alto4) / 5,
+			promFon = (Tienda.fondo0 + Tienda.fondo1 + Tienda.fondo2 + Tienda.fondo3 + Tienda.fondo4) / 5;
 	int totM;
 
 	public void actionPerformedcomboBox(ActionEvent e) {
@@ -111,13 +113,13 @@ public class GenRepor extends JFrame implements ActionListener {
 			malVenOp();
 			break;
 		case 2:
-			menAlProm();
+			menAlpromP();
 			break;
 		case 3:
-			mayAlProm();
+			mayAlpromP();
 			break;
 		default:
-			promMaxMin();
+			promPMaxMin();
 		}
 	}
 
@@ -192,106 +194,207 @@ public class GenRepor extends JFrame implements ActionListener {
 		Tienda.Imprimir(txtS, "Importe total acumulado :" + icomAcu5 + "\n");
 	}
 
-	void mayAlProm() {
-		txtS.setText("     " + "Precios mayores al promedio" + "\n\n");
-		if (prom < Tienda.precio0) {
+	void mayAlpromP() {
+		txtS.setText("     " + "Precios mayores al promPedio" + "\n\n");
+		if (promP < Tienda.precio0) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo0);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio0 + "\n");
 		}
-		if (prom < Tienda.precio1) {
+		if (promP < Tienda.precio1) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo1);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio1 + "\n");
 		}
-		if (prom < Tienda.precio2) {
+		if (promP < Tienda.precio2) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo2);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio2 + "\n");
 		}
-		if (prom < Tienda.precio3) {
+		if (promP < Tienda.precio3) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo3);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio3 + "\n");
 		}
-		if (prom < Tienda.precio4) {
+		if (promP < Tienda.precio4) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo4);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio4 + "\n");
 		}
-		Tienda.Imprimir(txtS, "Promedio :" + prom + "\n");
+		Tienda.Imprimir(txtS, "promPedio :" + promP + "\n");
 	}
 
-	void menAlProm() {
-		txtS.setText("     " + "Precios menores al promedio" + "\n\n");
-		if (prom > Tienda.precio0) {
+	void menAlpromP() {
+		txtS.setText("     " + "Precios menores al promPedio" + "\n\n");
+		if (promP > Tienda.precio0) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo0);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio0 + "\n");
 		}
-		if (prom > Tienda.precio1) {
+		if (promP > Tienda.precio1) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo1);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio1 + "\n");
 		}
-		if (prom > Tienda.precio2) {
+		if (promP > Tienda.precio2) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo2);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio2 + "\n");
 		}
-		if (prom > Tienda.precio3) {
+		if (promP > Tienda.precio3) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo3);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio3 + "\n");
 		}
-		if (prom > Tienda.precio4) {
+		if (promP > Tienda.precio4) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo4);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio4 + "\n");
 		}
-		Tienda.Imprimir(txtS, "Promedio :" + prom + "\n");
+		Tienda.Imprimir(txtS, "promPedio :" + promP + "\n");
 	}
 
-	void promMaxMin() {
+	void promPMaxMin() {
 
 		// Formula UNO
-		double numMay = 0, numMen = 2147483647;
-		/*
-		 * if(numMay < Tienda.precio0 && prom <Tienda.precio0){ numMay =
-		 * Tienda.precio0; }if(/**numMen > Tienda.precio0 && prom >
-		 * Tienda.precio0){ numMen = Tienda.precio0; }if(/**numMay <
-		 * Tienda.precio1 && prom <Tienda.precio1){ numMay = Tienda.precio1;
-		 * }if(/**numMen > Tienda.precio1 && prom > Tienda.precio1){ numMen =
-		 * Tienda.precio1; }if(/**numMay < Tienda.precio2 && prom
-		 * <Tienda.precio2){ numMay = Tienda.precio2; }if(/**numMen >
-		 * Tienda.precio2 && prom > Tienda.precio2){ numMen = Tienda.precio2;
-		 * }if(/**numMay < Tienda.precio3 && prom <Tienda.precio3){ numMay =
-		 * Tienda.precio3; }if(/**numMen > Tienda.precio3 && prom >
-		 * Tienda.precio3){ numMen = Tienda.precio3; }if(/**numMay <
-		 * Tienda.precio4 && prom <Tienda.precio4){ numMay = Tienda.precio4;
-		 * }if(/**numMen > Tienda.precio4 && prom > Tienda.precio4){ numMen =
-		 * Tienda.precio4; }
+		double 	preMay = 0, preMen = 2147483647,
+				anMay = 0, anMen = 2147483647,
+				alMay = 0, alMen = 2147483647,
+				fonMay = 0, fonMen = 2147483647;
+		/**
+		  if(preMay < Tienda.precio0 && promP <Tienda.precio0){ preMay =
+		  Tienda.precio0; }if(preMen > Tienda.precio0 && promP >
+		  Tienda.precio0){ preMen = Tienda.precio0; }if(/**preMay <
+		  Tienda.precio1 && promP <Tienda.precio1){ preMay = Tienda.precio1;
+		  }if(preMen > Tienda.precio1 && promP > Tienda.precio1){ preMen =
+		  Tienda.precio1; }if(preMay < Tienda.precio2 && promP
+		  <Tienda.precio2){ preMay = Tienda.precio2; }if(preMen >
+		  Tienda.precio2 && promP > Tienda.precio2){ preMen = Tienda.precio2;
+		  }if(preMay < Tienda.precio3 && promP <Tienda.precio3){ preMay =
+		  Tienda.precio3; }if(preMen > Tienda.precio3 && promP >
+		  Tienda.precio3){ preMen = Tienda.precio3; }if(preMay <
+		  Tienda.precio4 && promP <Tienda.precio4){ preMay = Tienda.precio4;
+		  }if(preMen > Tienda.precio4 && promP > Tienda.precio4){ preMen =
+		  Tienda.precio4; }
 		 **/
 		// Formula DOS
 		//Numero menor
-		if (numMen > Tienda.precio0) {
-			numMen = Tienda.precio0;
-		}if (numMen > Tienda.precio1) {
-			numMen = Tienda.precio1;
-		}if (numMen > Tienda.precio2) {
-			numMen = Tienda.precio2;
-		}if (numMen > Tienda.precio3) {
-			numMen = Tienda.precio3;
-		}if (numMen > Tienda.precio4) {
-			numMen = Tienda.precio4;
+		if (preMen > Tienda.precio0) {
+			preMen = Tienda.precio0;
+		}
+		if (preMen > Tienda.precio1) {
+			preMen = Tienda.precio1;
+
+		}
+		if (preMen > Tienda.precio2) {
+			preMen = Tienda.precio2;
+		}
+		if (preMen > Tienda.precio3) {
+			preMen = Tienda.precio3;
+		}if (preMen > Tienda.precio4) {
+			preMen = Tienda.precio4;
+		}
+		
+		
+		if (anMen > Tienda.ancho0) {
+			anMen = Tienda.ancho0;
+		}
+		if (anMen > Tienda.ancho1) {
+			anMen = Tienda.ancho1;
+		}
+		if (anMen > Tienda.ancho2) {
+			anMen = Tienda.ancho2;
+		}
+		if (anMen > Tienda.ancho3) {
+			anMen = Tienda.ancho3;
+		}if (anMen > Tienda.ancho4) {
+			anMen = Tienda.ancho4;
+		}
+		
+		
+		if (alMen > Tienda.alto0 ) {
+			alMen = Tienda.alto0;
+		}
+		if (alMen > Tienda.alto1 ) {
+			alMen = Tienda.alto1;
+		}if (alMen > Tienda.alto2 ) {
+			alMen = Tienda.alto2;
+		}if (alMen > Tienda.alto3 ) {
+			alMen = Tienda.alto3;
+		}if (alMen > Tienda.alto4 ) {
+			alMen = Tienda.alto4;
+		}
+		
+		
+		if (fonMen > Tienda.fondo0) {
+			fonMen = Tienda.fondo0;
+		}
+		if (fonMen > Tienda.fondo1) {
+			fonMen = Tienda.fondo1;
+		}
+		if (fonMen > Tienda.fondo2) {
+			fonMen = Tienda.fondo2;
+		}
+		if (fonMen > Tienda.fondo3) {
+			fonMen = Tienda.fondo3;
+		}
+		if (fonMen > Tienda.fondo4) {
+			fonMen = Tienda.fondo4;
 		}
 		
 		//Numero mayor
-		if (numMay < Tienda.precio0) {
-			numMay = Tienda.precio0;
-		}if (numMay < Tienda.precio1) {
-			numMay = Tienda.precio1;
-		}if (numMay < Tienda.precio2) {
-			numMay = Tienda.precio2;
-		}if (numMay < Tienda.precio3) {
-			numMay = Tienda.precio3;
-		}if (numMay < Tienda.precio4) {
-			numMay = Tienda.precio4;
+		if (preMay < Tienda.precio0) {
+			preMay = Tienda.precio0;
+		}if (preMay < Tienda.precio1) {
+			preMay = Tienda.precio1;
+		}if (preMay < Tienda.precio2) {
+			preMay = Tienda.precio2;
+		}if (preMay < Tienda.precio3) {
+			preMay = Tienda.precio3;
+		}if (preMay < Tienda.precio4) {
+			preMay = Tienda.precio4;
 		}
 		
-		txtS.setText("     " + "Promedio, maximos y  minimos" + "\n\n");
-		Tienda.Imprimir(txtS, "Precio mayor:  " + numMay);
-		Tienda.Imprimir(txtS, "Precio menor:  " + numMen);
-		Tienda.Imprimir(txtS, "Promedio :" + prom);
+		if (anMay < Tienda.ancho0) {
+			anMay = Tienda.ancho0;
+		}if (anMay < Tienda.ancho1) {
+			anMay = Tienda.ancho1;
+		}if (anMay < Tienda.ancho2) {
+			anMay = Tienda.ancho2;
+		}if (anMay < Tienda.ancho3) {
+			anMay = Tienda.ancho3;
+		}if (preMay < Tienda.ancho4) {
+			anMay = Tienda.ancho4;
+		}
+		
+		if (alMay < Tienda.alto0) {
+			alMay = Tienda.alto0;
+		}if (alMay < Tienda.alto1) {
+			alMay = Tienda.alto1;
+		}if (alMay < Tienda.alto2) {
+			alMay = Tienda.alto2;
+		}if (alMay < Tienda.alto3) {
+			alMay = Tienda.alto3;
+		}if (alMay < Tienda.alto4) {
+			alMay = Tienda.alto4;
+		}
+		
+		if (fonMay < Tienda.fondo0) {
+			fonMay = Tienda.fondo0;
+		}if (fonMay < Tienda.fondo1) {
+			fonMay = Tienda.fondo1;
+		}if (fonMay < Tienda.fondo2) {
+			fonMay = Tienda.fondo2;
+		}if (fonMay < Tienda.fondo3) {
+			fonMay = Tienda.fondo3;
+		}if (fonMay < Tienda.fondo4) {
+			fonMay = Tienda.fondo4;
+		}
+		txtS.setText("     " + "promPedio, maximos y  minimos" + "\n\n");
+		Tienda.Imprimir(txtS, "Precio mayor:  " + preMay);
+		Tienda.Imprimir(txtS, "Precio menor:  " + preMen);
+		Tienda.Imprimir(txtS, "promPedio :" + promP + "\n");
+		
+		Tienda.Imprimir(txtS, "Precio mayor:  " + anMay);
+		Tienda.Imprimir(txtS, "Precio menor:  " + anMen);
+		Tienda.Imprimir(txtS, "promPedio :" + promAn + "\n");
+		
+		Tienda.Imprimir(txtS, "Precio mayor:  " + alMay);
+		Tienda.Imprimir(txtS, "Precio menor:  " + alMen);
+		Tienda.Imprimir(txtS, "promPedio :" + promAl + "\n");
+		
+		Tienda.Imprimir(txtS, "Precio mayor:  " + fonMay);
+		Tienda.Imprimir(txtS, "Precio menor:  " + fonMen);
+		Tienda.Imprimir(txtS, "promPedio :" + promFon + "\n");
 	}
 }
