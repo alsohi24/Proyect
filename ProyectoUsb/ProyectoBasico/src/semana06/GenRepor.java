@@ -24,7 +24,6 @@ public class GenRepor extends JFrame implements ActionListener{
 	private JComboBox comboBox; 
 	private JScrollPane scrollPane;
 	private JTextArea txtS;
-
 	/**
 	 * Launch the application.
 	 */
@@ -93,7 +92,10 @@ public class GenRepor extends JFrame implements ActionListener{
 	public static int 	totVen1, totVen2, totVen3, totVen4, totVen5,
 						totMaV1, totMaV2, totMaV3, totMaV4, totMaV5;
 	public static double icomAcu1, icomAcu2, icomAcu3, icomAcu4, icomAcu5,
-																	prom;
+																	
+	
+	prom = (Tienda.precio0 + Tienda.precio1 + Tienda.precio2 +Tienda.precio3
+			+ Tienda.precio4)/5;
 
 	int totM;
 	
@@ -110,8 +112,11 @@ public class GenRepor extends JFrame implements ActionListener{
 		case 2 :
 			menAlProm();
 			break;
-		default:	
+		case 3 :	
 			mayAlProm();
+			break;
+		default:	
+			promMaxMin();
 		}
 	}
 	
@@ -182,8 +187,6 @@ public class GenRepor extends JFrame implements ActionListener{
 	}
 	
 	void mayAlProm(){
-		prom = (Tienda.precio0 + Tienda.precio1 + Tienda.precio2 +Tienda.precio3
-				+ Tienda.precio4)/5;
 		txtS.setText("     "+"Precios mayores al promedio" + "\n\n");
 		if(prom < Tienda.precio0){
 			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo0);
@@ -205,8 +208,6 @@ public class GenRepor extends JFrame implements ActionListener{
 	}
 	
 	void menAlProm(){
-		prom = (Tienda.precio0 + Tienda.precio1 + Tienda.precio2 +Tienda.precio3
-				+ Tienda.precio4)/5;
 		txtS.setText("     "+"Precios menores al promedio" + "\n\n");
 		if(prom > Tienda.precio0){
 			Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo0);
@@ -225,5 +226,49 @@ public class GenRepor extends JFrame implements ActionListener{
 			Tienda.Imprimir(txtS,"Precio :" + Tienda.precio4 + "\n");			
 		}
 		Tienda.Imprimir(txtS,"Promedio :" + prom + "\n");
+	}
+	
+	
+	void promMaxMin(){
+		
+		//Formula UNO
+		double	 numMay = 0,
+		 		numMen = 100000000;
+		
+		if(/**numMay < Tienda.precio0 &&**/ prom <Tienda.precio0){
+			numMay = Tienda.precio0;
+		}if(/**numMen > Tienda.precio0 &&**/ prom > Tienda.precio0){
+			numMen = Tienda.precio0;
+		}if(/**numMay < Tienda.precio1 &&**/ prom <Tienda.precio1){
+			numMay = Tienda.precio1;
+		}if(/**numMen > Tienda.precio1 &&**/ prom > Tienda.precio1){
+			numMen = Tienda.precio1;
+		}if(/**numMay < Tienda.precio2 &&**/ prom <Tienda.precio2){
+			numMay = Tienda.precio2;
+		}if(/**numMen > Tienda.precio2 &&**/ prom > Tienda.precio2){
+			numMen = Tienda.precio2;
+		}if(/**numMay < Tienda.precio3 &&**/ prom <Tienda.precio3){
+			numMay = Tienda.precio3;
+		}if(/**numMen > Tienda.precio3 &&**/ prom > Tienda.precio3){
+			numMen = Tienda.precio3;
+		}if(/**numMay < Tienda.precio4 &&**/ prom <Tienda.precio4){
+			numMay = Tienda.precio4;
+		}if(/**numMen > Tienda.precio4 &&**/ prom > Tienda.precio4){
+			numMen = Tienda.precio4;
+		}
+		txtS.setText("     "+"Promedio, maximos y  minimos" + "\n\n");
+		Tienda.Imprimir(txtS, "Precio mayor:  " + numMay);
+		Tienda.Imprimir(txtS, "Precio menor:  "+ numMen);
+		Tienda.Imprimir(txtS,"Promedio :" + prom);
+	
+		//Formula DOS
+		
+			if(prom > numMen){
+					numMen = Tienda.num;
+			}else{
+				if(numMen > Tienda.num){
+					numMen = Tienda.num;
+				}
+			}
 	}
 }

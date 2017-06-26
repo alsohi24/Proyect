@@ -96,6 +96,10 @@ public class Tienda extends JFrame implements ActionListener {
 	public static int numeroClientePremiado = 5;
 	// Premio sorpresa
 	public static String premioSorpresa = "Una agenda";
+	
+	
+	//Mayores y menores
+	public static double num;
 
 
 

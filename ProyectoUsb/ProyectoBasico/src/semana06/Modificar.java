@@ -280,8 +280,10 @@ public class Modificar extends JDialog implements ActionListener {
 	
 	}
 
+	
 	private void getModificaciones() {
-		int cod = cboCodigo.getSelectedIndex();	
+		int cod = cboCodigo.getSelectedIndex();
+		
 		switch (cod) {
 		case 0:
 			Tienda.modelo0 = textModelo.getText();
