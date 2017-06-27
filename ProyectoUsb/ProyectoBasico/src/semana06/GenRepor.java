@@ -162,7 +162,13 @@ public class GenRepor extends JFrame implements ActionListener {
 
 	void totalDeVentas() {
 		txtS.setText("     " + "Reporte totalde las ventas" + "\n\n");
-
+		
+		Tienda.imprimirResultados(txtS, Tienda.codigo0, Tienda.modelo0, totVen1, totMaV1, icomAcu1);
+		Tienda.imprimirResultados(txtS, Tienda.codigo1, Tienda.modelo1, totVen2, totMaV2, icomAcu2);
+		Tienda.imprimirResultados(txtS, Tienda.codigo2, Tienda.modelo2, totVen3, totMaV3, icomAcu3);
+		Tienda.imprimirResultados(txtS, Tienda.codigo3, Tienda.modelo3, totVen4, totMaV4, icomAcu4);
+		
+		
 		Tienda.Imprimir(txtS, "Codigo :" + Tienda.codigo0);
 		Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo0);
 		Tienda.Imprimir(txtS, "Cantidad total de ventas  :" + totVen1);
@@ -267,8 +273,15 @@ public class GenRepor extends JFrame implements ActionListener {
 		  }if(preMen > Tienda.precio4 && promP > Tienda.precio4){ preMen =
 		  Tienda.precio4; }
 		 **/
-		// Formula DOS
+		
 		//Numero menor
+		preMen = Tienda.numMenor(preMen, Tienda.precio0, Tienda.precio1, Tienda.precio2, Tienda.precio3, Tienda.precio4);
+		anMen = Tienda.numMenor(anMen, Tienda.ancho0, Tienda.ancho1, Tienda.ancho2, Tienda.ancho3, Tienda.ancho4);
+		alMen = Tienda.numMenor(alMen, Tienda.alto0, Tienda.alto1, Tienda.alto2, Tienda.alto3, Tienda.alto4);
+		fonMen = Tienda.numMenor(fonMen, Tienda.fondo0, Tienda.fondo1, Tienda.fondo2, Tienda.fondo3, Tienda.fondo4);
+		
+		// Formula DOS
+		/**
 		if (preMen > Tienda.precio0) {
 			preMen = Tienda.precio0;
 		}
@@ -331,8 +344,15 @@ public class GenRepor extends JFrame implements ActionListener {
 		if (fonMen > Tienda.fondo4) {
 			fonMen = Tienda.fondo4;
 		}
-		
+		**/
 		//Numero mayor
+		//double ;
+		preMay = Tienda.numMayor(preMay, Tienda.precio0, Tienda.precio1, Tienda.precio2, Tienda.precio3, Tienda.precio4);
+		anMay = Tienda.numMayor(anMay, Tienda.ancho0, Tienda.ancho1, Tienda.ancho2, Tienda.ancho3, Tienda.ancho4);
+		alMay = Tienda.numMayor(alMay, Tienda.alto0, Tienda.alto1, Tienda.alto2, Tienda.alto3, Tienda.alto4);
+		fonMay = Tienda.numMayor(fonMay, Tienda.fondo0, Tienda.fondo1, Tienda.fondo2, Tienda.fondo3, Tienda.fondo4);
+
+		/**
 		if (preMay < Tienda.precio0) {
 			preMay = Tienda.precio0;
 		}if (preMay < Tienda.precio1) {
@@ -369,17 +389,19 @@ public class GenRepor extends JFrame implements ActionListener {
 			alMay = Tienda.alto4;
 		}
 		
-		if (fonMay < Tienda.fondo0) {
-			fonMay = Tienda.fondo0;
-		}if (fonMay < Tienda.fondo1) {
-			fonMay = Tienda.fondo1;
-		}if (fonMay < Tienda.fondo2) {
-			fonMay = Tienda.fondo2;
-		}if (fonMay < Tienda.fondo3) {
-			fonMay = Tienda.fondo3;
-		}if (fonMay < Tienda.fondo4) {
-			fonMay = Tienda.fondo4;
-		}
+		 
+		 if (fonMay < Tienda.fondo0) {
+				fonMay = Tienda.fondo0;
+			}if (fonMay < Tienda.fondo1) {
+				fonMay = Tienda.fondo1;
+			}if (fonMay < Tienda.fondo2) {
+				fonMay = Tienda.fondo2;
+			}if (fonMay < Tienda.fondo3) {
+				fonMay = Tienda.fondo3;
+			}if (fonMay < Tienda.fondo4) {
+				fonMay = Tienda.fondo4;
+			}									@-v-@  **/
+		
 		txtS.setText("     " + "promPedio, maximos y  minimos" + "\n\n");
 		Tienda.Imprimir(txtS, "Precio mayor:  " + preMay);
 		Tienda.Imprimir(txtS, "Precio menor:  " + preMen);

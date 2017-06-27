@@ -365,4 +365,43 @@ public class Tienda extends JFrame implements ActionListener {
 		text.selectAll();
 		text.requestFocus();
 	}
+	public static Double numMayor(double may, double TVar0, double TVar01, double TVar02, double TVar03, double TVar04){
+		 
+		if (may < TVar0) {
+			 may = TVar0;
+		}if (may < TVar01) {
+			 may = TVar01;
+		}if (may < TVar02) {
+			 may = TVar02;
+		}if (may < TVar03) {
+			 may = TVar03;
+		}if (may < TVar04) {
+			 may = TVar04;
+		}
+		return may;
+	}
+	
+	public static Double numMenor(double men, double TVar0, double TVar1, double TVar2, double TVar3, double TVar4){
+		 
+		if (men > TVar0) {
+			men = TVar0;
+		}if (men > TVar1) {
+			men = TVar1;
+		}if (men > TVar2) {
+			men = TVar2;
+		}if (men > TVar3) {
+			men = TVar3;
+		}if (men >TVar4) {
+			men = TVar4;
+		}
+		return men;
+	}
+	
+	public static void imprimirResultados(JTextArea txtS, String cod, String mod, double totV, double totM, double ic ){
+		Tienda.Imprimir(txtS, "Codigo :" + cod);
+		Tienda.Imprimir(txtS, "Modelo :" + mod);
+		Tienda.Imprimir(txtS, "Cantidad total de ventas  :" + totV);
+		Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas :" + totM);
+		Tienda.Imprimir(txtS, "Importe total acumulado :" + ic + "\n");
+	}
 }
