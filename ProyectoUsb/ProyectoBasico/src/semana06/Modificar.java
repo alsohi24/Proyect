@@ -29,7 +29,7 @@ public class Modificar extends JDialog implements ActionListener {
 	private JLabel lblFondo;
 	private JButton btnCerrar;
 	private JTextField textModelo;
-	private JTextField textprecio;
+	private JTextField textPrecio;
 	private JTextField textAlto;
 	private JTextField textAncho;
 	private JTextField textFondo;
@@ -99,8 +99,8 @@ public class Modificar extends JDialog implements ActionListener {
 		cboCodigo.setModel(new DefaultComboBoxModel(new String[] { "MT0", "MT1", "MT2", "MT3", "MT4" }));
 		getContentPane().add(cboCodigo);
 
-		textprecio = new JTextField();
-		textprecio.addKeyListener(new KeyAdapter() {
+		textPrecio = new JTextField();
+		textPrecio.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				char c = e.getKeyChar();
 
@@ -108,18 +108,18 @@ public class Modificar extends JDialog implements ActionListener {
 
 					e.consume();
 
-					Tienda.mensaje(textprecio, "Ingresa Solo Numeros");
-					Tienda.focusSelectAll(textprecio);
+					Tienda.mensaje(textPrecio, "Ingresa Solo Numeros");
+					Tienda.focusSelectAll(textPrecio);
 
 				}else if( Character.isWhitespace(c)){
 					Tienda.mensaje(textFondo, "Cuidado con espacios en blanco");
-					Tienda.focusSelectAll(textprecio);
+					Tienda.focusSelectAll(textPrecio);
 				}
 			}
 		});
-		textprecio.setBounds(187, 99, 160, 20);
-		getContentPane().add(textprecio);
-		textprecio.setColumns(10);
+		textPrecio.setBounds(187, 99, 160, 20);
+		getContentPane().add(textPrecio);
+		textPrecio.setColumns(10);
 
 		textModelo = new JTextField();
 		textModelo.setBounds(187, 68, 160, 20);
@@ -223,39 +223,56 @@ public class Modificar extends JDialog implements ActionListener {
 		int cod = cboCodigo.getSelectedIndex();
 		switch (cod) {
 		case 0:
+			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo0, 
+					Tienda.precio0, Tienda.ancho0, Tienda.alto0, Tienda.fondo0);
+			/**
 			textModelo.setText(Tienda.modelo0);
-			textprecio.setText(Tienda.precio0 +"");
+			textPrecio.setText(Tienda.precio0 +"");
 			textAncho.setText(Tienda.ancho0 +"");
 			textAlto.setText(Tienda.alto0 +"");
-			textFondo.setText(Tienda.fondo0 +"");
+			textFondo.setText(Tienda.fondo0 +"");**/
 			break;
 		case 1:	
+			
+		Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo1,
+					Tienda.precio1, Tienda.ancho1, Tienda.alto1, Tienda.fondo1);
+			
+		/**
 			textModelo.setText(Tienda.modelo1);
-			textprecio.setText(Tienda.precio1 +"");
+			textPrecio.setText(Tienda.precio1 +"");
 			textAncho.setText(Tienda.ancho1 +"");
 			textAlto.setText(Tienda.alto1 +"");
-			textFondo.setText(Tienda.fondo1 +"");
+			textFondo.setText(Tienda.fondo1 +"");**/
 			break;
 		case 2:
+			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo2,
+					Tienda.precio2, Tienda.ancho2, Tienda.alto2, Tienda.fondo2);
+			/**	
 			textModelo.setText(Tienda.modelo2);
-			textprecio.setText(Tienda.precio2 +"");
+			textPrecio.setText(Tienda.precio2 +"");
 			textAncho.setText(Tienda.ancho2 +"");
 			textAlto.setText(Tienda.alto2 +"");
-			textFondo.setText(Tienda.fondo2 +"");
+			textFondo.setText(Tienda.fondo2 +"");**/
 			break;
 		case 3:
+			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo3,
+					Tienda.precio3, Tienda.ancho3, Tienda.alto3, Tienda.fondo3);
+			/**
 			textModelo.setText(Tienda.modelo3);
-			textprecio.setText(Tienda.precio3 +"");
+			textPrecio.setText(Tienda.precio3 +"");
 			textAncho.setText(Tienda.ancho3 +"");
 			textAlto.setText(Tienda.alto3 +"");
-			textFondo.setText(Tienda.fondo3 +"");
+			textFondo.setText(Tienda.fondo3 +"");**/
 			break;
 		default:
+			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo4,
+					Tienda.precio4, Tienda.ancho4, Tienda.alto4, Tienda.fondo4);
+			/**
 			textModelo.setText(Tienda.modelo4);
-			textprecio.setText(Tienda.precio4 +"");
+			textPrecio.setText(Tienda.precio4 +"");
 			textAncho.setText(Tienda.ancho4 +"");
 			textAlto.setText(Tienda.alto4 +"");
-			textFondo.setText(Tienda.fondo4 +"");
+			textFondo.setText(Tienda.fondo4 +"");**/
 		}
 
 	}
@@ -287,14 +304,14 @@ public class Modificar extends JDialog implements ActionListener {
 		switch (cod) {
 		case 0:
 			Tienda.modelo0 = textModelo.getText();
-			Tienda.precio0 = Double.parseDouble(textprecio.getText());
+			Tienda.precio0 = Double.parseDouble(textPrecio.getText());
 			Tienda.ancho0 = Double.parseDouble(textAncho.getText());
 			Tienda.alto0 = Double.parseDouble(textAlto.getText());
 			Tienda.fondo0 = Double.parseDouble(textFondo.getText());
 			break;
 		case 1:
 			Tienda.modelo1 = textModelo.getText();
-			Tienda.precio1 = Double.parseDouble(textprecio.getText());
+			Tienda.precio1 = Double.parseDouble(textPrecio.getText());
 			Tienda.ancho1 = Double.parseDouble(textAncho.getText());
 			Tienda.alto1 = Double.parseDouble(textAlto.getText());
 			Tienda.fondo1 = Double.parseDouble(textFondo.getText());
@@ -302,21 +319,21 @@ public class Modificar extends JDialog implements ActionListener {
 
 		case 2:
 			Tienda.modelo2 = textModelo.getText();
-			Tienda.precio2 = Double.parseDouble(textprecio.getText());
+			Tienda.precio2 = Double.parseDouble(textPrecio.getText());
 			Tienda.ancho2 = Double.parseDouble(textAncho.getText());
 			Tienda.alto2 = Double.parseDouble(textAlto.getText());
 			Tienda.fondo2 = Double.parseDouble(textFondo.getText());
 			break;
 		case 3:
 			Tienda.modelo3 = textModelo.getText();
-			Tienda.precio3 = Double.parseDouble(textprecio.getText());
+			Tienda.precio3 = Double.parseDouble(textPrecio.getText());
 			Tienda.ancho3 = Double.parseDouble(textAncho.getText());
 			Tienda.alto3 = Double.parseDouble(textAlto.getText());
 			Tienda.fondo3 = Double.parseDouble(textFondo.getText());
 			break;
 		default:
 			Tienda.modelo4 = textModelo.getText();
-			Tienda.precio4 = Double.parseDouble(textprecio.getText());
+			Tienda.precio4 = Double.parseDouble(textPrecio.getText());
 			Tienda.ancho4 = Double.parseDouble(textAncho.getText());
 			Tienda.alto4 = Double.parseDouble(textAlto.getText());
 			Tienda.fondo4 = Double.parseDouble(textFondo.getText());
@@ -330,7 +347,7 @@ public class Modificar extends JDialog implements ActionListener {
 	
 	public void mostrarDatosPorDefecto(){
 		textModelo.setText(Tienda.modelo0);
-		textprecio.setText(Tienda.precio0 +"");
+		textPrecio.setText(Tienda.precio0 +"");
 		textAncho.setText(Tienda.ancho0 +"");
 		textAlto.setText(Tienda.alto0 +"");
 		textFondo.setText(Tienda.fondo0 +"");		

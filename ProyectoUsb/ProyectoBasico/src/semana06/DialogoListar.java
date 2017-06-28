@@ -90,7 +90,18 @@ public class DialogoListar extends JDialog implements ActionListener {
 	
 	void Lista(){
 		txtS.setText("     "+"Listado de Maletas" + "\n\n");
-
+		
+		Tienda.imprimirListas(txtS, Tienda.codigo0, Tienda.modelo0, Tienda.precio0,
+				Tienda.ancho0, Tienda.alto0, Tienda.fondo0);
+		Tienda.imprimirListas(txtS, Tienda.codigo1, Tienda.modelo1, Tienda.precio1,
+				Tienda.ancho1, Tienda.alto1, Tienda.fondo1);
+		Tienda.imprimirListas(txtS, Tienda.codigo2, Tienda.modelo2, Tienda.precio2,
+				Tienda.ancho2, Tienda.alto2, Tienda.fondo2);
+		Tienda.imprimirListas(txtS, Tienda.codigo3, Tienda.modelo3, Tienda.precio3,
+				Tienda.ancho3, Tienda.alto3, Tienda.fondo3);
+		Tienda.imprimirListas(txtS, Tienda.codigo4, Tienda.modelo4, Tienda.precio4,
+				Tienda.ancho4, Tienda.alto4, Tienda.fondo4);
+		/**
 		Tienda.Imprimir(txtS, "Codigo :" + Tienda.codigo0);
 		Tienda.Imprimir(txtS,"Modelo :" + Tienda.modelo0);
 		Tienda.Imprimir(txtS,"Precio :" + Tienda.precio0);
@@ -124,6 +135,6 @@ public class DialogoListar extends JDialog implements ActionListener {
 		Tienda.Imprimir(txtS,"Precio :" + Tienda.precio4);
 		Tienda.Imprimir(txtS,"Ancho :" + Tienda.ancho4);
 		Tienda.Imprimir(txtS,"Alto :"+ Tienda.alto4);
-		Tienda.Imprimir(txtS,"Fondo :"+ Tienda.fondo4 +"\n");
+		Tienda.Imprimir(txtS,"Fondo :"+ Tienda.fondo4 +"\n"); **/
 	}
 }

@@ -147,10 +147,11 @@ public class Vender extends JDialog implements ActionListener{
 	}
 
 	double icom, ides, ipag;
-	int can, cod;
+	int can, cod, totV;
 	
 	public void actionPerformedbtnVender(ActionEvent arg0) {
-		
+		totV++;
+		clientePremiado();
 		ingresardatos();
 		calcularimportecompra();
 		contAcum();
@@ -240,6 +241,13 @@ public class Vender extends JDialog implements ActionListener{
 		Tienda.Imprimir(txtS, "Obsequio                  :	" + Tienda.obsequio);
 		Tienda.Imprimir(txtS, "Premio Sorpresa     :	" + Tienda.premioSorpresa);
 
+	}
+	
+	void clientePremiado(){
+		if(totV == Tienda.numeroClientePremiado){
+			Tienda.mensaje(this, "FELICIDADES ERES EL GANARDOR");
+		}
+		
 	}
 	
 	

@@ -397,11 +397,62 @@ public class Tienda extends JFrame implements ActionListener {
 		return men;
 	}
 	
-	public static void imprimirResultados(JTextArea txtS, String cod, String mod, double totV, double totM, double ic ){
+	public static void imprimirVentas(JTextArea txtS, String cod, String mod, double totV, double totM, double ic ){
 		Tienda.Imprimir(txtS, "Codigo :" + cod);
 		Tienda.Imprimir(txtS, "Modelo :" + mod);
 		Tienda.Imprimir(txtS, "Cantidad total de ventas  :" + totV);
 		Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas :" + totM);
 		Tienda.Imprimir(txtS, "Importe total acumulado :" + ic + "\n");
+	}
+	
+	public static void VentaOptima( JTextArea txtS, int totV, int CanOp, int totMaV, String Tcodigo, String Tmodelo ){
+		if (totV > CanOp) {
+			Tienda.Imprimir(txtS, "Codigo  :" + Tcodigo);
+			Tienda.Imprimir(txtS, "Modelo  :" + Tmodelo);
+			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV + "x \n");
+		}
+	}
+	
+	public static int menorAlProm(JTextArea txtS, double prom,String mod, double pre, int con){
+		if (prom > pre) {
+			Tienda.Imprimir(txtS, "Modelo :" + mod);
+			Tienda.Imprimir(txtS, "Precio :" + pre + "\n");
+			con++;
+		}return con;
+	}
+	
+	public static int mayorAlProm(JTextArea txtS, double prom,String mod, double pre, int con){
+		
+		if (prom < pre) {
+			Tienda.Imprimir(txtS, "Modelo :" + mod);
+			Tienda.Imprimir(txtS, "Precio :" + pre + "\n");	
+			con++;
+		}return con;
+	}
+	
+	public static void SetMayMen(JTextArea txtS, String String, double Vmay, double Vmen, double prom){
+		Tienda.Imprimir(txtS, String +" mayor:  "  + Vmay);
+		Tienda.Imprimir(txtS, String +" menor:  "  + Vmen);
+		Tienda.Imprimir(txtS, "Promedio del "+ String + ":  " + prom + "\n");
+	}
+	
+		public static void imprimirListas(JTextArea txtS, String cod, String mod, double pre, double an, double al, double fon){
+		Tienda.Imprimir(txtS, "Codigo :" + cod);
+		Tienda.Imprimir(txtS,"Modelo :" + mod);
+		Tienda.Imprimir(txtS,"Precio :" + pre);
+		Tienda.Imprimir(txtS,"Ancho :" + an);
+		Tienda.Imprimir(txtS,"Alto :"+ al);
+		Tienda.Imprimir(txtS,"Fondo :"+ fon + "\n");
+	}
+	
+	public static void SetDatos(JTextField textModelo, JTextField textPrecio,
+			JTextField textAncho, JTextField textAlto, JTextField textFondo, String mod,
+			double pre, double an, double al, double fon){
+		
+			textModelo.setText(mod);
+			textPrecio.setText(pre +"");
+			textAncho.setText(an +"");
+			textAlto.setText(al +"");
+			textFondo.setText(fon +"");
 	}
 }

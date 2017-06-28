@@ -95,6 +95,7 @@ public class GenRepor extends JFrame implements ActionListener {
 
 	public static int totVen1, totVen2, totVen3, totVen4, totVen5, totMaV1, totMaV2, totMaV3, totMaV4, totMaV5;
 	public static double icomAcu1, icomAcu2, icomAcu3, icomAcu4, icomAcu5,
+						icomGen,
 
 			promP = (Tienda.precio0 + Tienda.precio1 + Tienda.precio2 + Tienda.precio3 + Tienda.precio4) / 5,
 			promAn = (Tienda.ancho0 + Tienda.ancho1 + Tienda.ancho2 + Tienda.ancho3 + Tienda.ancho4) / 5,
@@ -122,53 +123,20 @@ public class GenRepor extends JFrame implements ActionListener {
 			promPMaxMin();
 		}
 	}
-
-	void malVenOp() {
-		txtS.setText("     " + "Reporte de Ventas Optimas" + "\n\n");
-		if (totVen1 >= Tienda.cantidadOptima) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo0);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo0);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV1 + "x \n");
-		} /**
-			 * if(totVen1 == Tienda.cantidadOptima){ Tienda.Imprimir(txtS,
-			 * "Codigo :" + Tienda.codigo0); Tienda.Imprimir(txtS,"Modelo :" +
-			 * Tienda.modelo0); Tienda.Imprimir(txtS,"Cantidad total de maletas
-			 * vendidas : " + totMaV1 + "n \n"); }
-			 **/
-		if (totVen2 >= Tienda.cantidadOptima) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo1);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo1);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV2 + "\n");
-		}
-		if (totVen3 >= Tienda.cantidadOptima) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo2);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo2);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV3 + "\n");
-		}
-		if (totVen4 >= Tienda.cantidadOptima) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo3);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo3);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV4 + "\n");
-		}
-		if (totVen5 >= Tienda.cantidadOptima) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo4);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo4);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV5 + "\n");
-		}
-		if (true) {
-			Tienda.Imprimir(txtS, "Funciona");
-		}
-	}
-
+	
 	void totalDeVentas() {
 		txtS.setText("     " + "Reporte totalde las ventas" + "\n\n");
 		
-		Tienda.imprimirResultados(txtS, Tienda.codigo0, Tienda.modelo0, totVen1, totMaV1, icomAcu1);
-		Tienda.imprimirResultados(txtS, Tienda.codigo1, Tienda.modelo1, totVen2, totMaV2, icomAcu2);
-		Tienda.imprimirResultados(txtS, Tienda.codigo2, Tienda.modelo2, totVen3, totMaV3, icomAcu3);
-		Tienda.imprimirResultados(txtS, Tienda.codigo3, Tienda.modelo3, totVen4, totMaV4, icomAcu4);
+		Tienda.imprimirVentas(txtS, Tienda.codigo0, Tienda.modelo0, totVen1, totMaV1, icomAcu1);
+		Tienda.imprimirVentas(txtS, Tienda.codigo1, Tienda.modelo1, totVen2, totMaV2, icomAcu2);
+		Tienda.imprimirVentas(txtS, Tienda.codigo2, Tienda.modelo2, totVen3, totMaV3, icomAcu3);
+		Tienda.imprimirVentas(txtS, Tienda.codigo3, Tienda.modelo3, totVen4, totMaV4, icomAcu4);
+		Tienda.imprimirVentas(txtS, Tienda.codigo4, Tienda.modelo4, totVen5, totMaV5, icomAcu5);
+		icomGen = (icomAcu1 + icomAcu2 + icomAcu3 + icomAcu4 + icomAcu5);
+		Tienda.Imprimir(txtS, "Importe total acumulado general :  " + icomGen);
 		
 		
+		/**
 		Tienda.Imprimir(txtS, "Codigo :" + Tienda.codigo0);
 		Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo0);
 		Tienda.Imprimir(txtS, "Cantidad total de ventas  :" + totVen1);
@@ -197,11 +165,53 @@ public class GenRepor extends JFrame implements ActionListener {
 		Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo4);
 		Tienda.Imprimir(txtS, "Cantidad total de ventas  :" + totVen5);
 		Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas :" + totMaV5);
-		Tienda.Imprimir(txtS, "Importe total acumulado :" + icomAcu5 + "\n");
+		Tienda.Imprimir(txtS, "Importe total acumulado :" + icomAcu5 + "\n");  **/
 	}
 
+	void malVenOp() {
+		txtS.setText("     " + "Reporte de Ventas Optimas" + "\n\n");
+		if (totVen1 > 50) {
+			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo0);
+			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo0);
+			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV1 + "x \n");
+		} 
+		Tienda.Imprimir(txtS, "Codigo :" + Tienda.codigo0); 
+		Tienda.Imprimir(txtS,"Modelo :" + Tienda.cantidadOptima); 
+		Tienda.Imprimir(txtS,"Cantidad total de maletasvendidas : " + totMaV1 + "n \n"); 
+			 
+		if (totVen2 >= 50) {
+			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo1);
+			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo1);
+			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV2 + "\n");
+		}
+		Tienda.VentaOptima(txtS, totVen3, Tienda.cantidadOptima, totMaV3, Tienda.codigo2, Tienda.modelo2);
+		if (totVen4 >= Tienda.cantidadOptima) {
+			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo3);
+			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo3);
+			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV4 + "\n");
+		}
+		if (true) {
+			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo4);
+			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo4);
+			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV5 + "\n");
+		}
+		if (true) {
+			Tienda.Imprimir(txtS, "Funciona");
+		}
+	}
+
+
+
 	void mayAlpromP() {
+		int conMal = 0;
 		txtS.setText("     " + "Precios mayores al promPedio" + "\n\n");
+		
+		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo0, Tienda.precio0, conMal);
+		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo1, Tienda.precio1, conMal);
+		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo2, Tienda.precio2, conMal);
+		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo3, Tienda.precio3, conMal);
+		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo4, Tienda.precio4, conMal);
+	/**
 		if (promP < Tienda.precio0) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo0);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio0 + "\n");
@@ -221,12 +231,20 @@ public class GenRepor extends JFrame implements ActionListener {
 		if (promP < Tienda.precio4) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo4);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio4 + "\n");
-		}
-		Tienda.Imprimir(txtS, "promPedio :" + promP + "\n");
+		}  **/
+		Tienda.Imprimir(txtS, "promPedio :" + promP);
+		Tienda.Imprimir(txtS, "Numero de maletas : " + conMal);
 	}
 
 	void menAlpromP() {
+		int conMal = 0; 
 		txtS.setText("     " + "Precios menores al promPedio" + "\n\n");
+		conMal = Tienda.menorAlProm(txtS, promP, Tienda.modelo0, Tienda.precio0, conMal);
+		conMal = Tienda.menorAlProm(txtS, promP, Tienda.modelo1, Tienda.precio1, conMal);
+		conMal = Tienda.menorAlProm(txtS, promP, Tienda.modelo2, Tienda.precio2, conMal);
+		conMal = Tienda.menorAlProm(txtS, promP, Tienda.modelo3, Tienda.precio3, conMal);
+		conMal = Tienda.menorAlProm(txtS, promP, Tienda.modelo4, Tienda.precio4, conMal);
+		/**
 		if (promP > Tienda.precio0) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo0);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio0 + "\n");
@@ -246,8 +264,10 @@ public class GenRepor extends JFrame implements ActionListener {
 		if (promP > Tienda.precio4) {
 			Tienda.Imprimir(txtS, "Modelo :" + Tienda.modelo4);
 			Tienda.Imprimir(txtS, "Precio :" + Tienda.precio4 + "\n");
-		}
-		Tienda.Imprimir(txtS, "promPedio :" + promP + "\n");
+		}**/
+		
+		Tienda.Imprimir(txtS, "Promedio : " + promP);
+		Tienda.Imprimir(txtS, "Numero de maletas : " + conMal);
 	}
 
 	void promPMaxMin() {
@@ -402,7 +422,14 @@ public class GenRepor extends JFrame implements ActionListener {
 				fonMay = Tienda.fondo4;
 			}									@-v-@  **/
 		
-		txtS.setText("     " + "promPedio, maximos y  minimos" + "\n\n");
+		txtS.setText("     " + "Promedios, maximos y  minimos" + "\n\n");
+		
+		Tienda.SetMayMen(txtS, "Precio", preMay, preMen, promP);
+		Tienda.SetMayMen(txtS, "Ancho", anMay, anMen, promAn);
+		Tienda.SetMayMen(txtS, "Alto", alMay, alMen, promAl);
+		Tienda.SetMayMen(txtS, "Fondo", fonMay, fonMen, promFon);
+		
+		/** 
 		Tienda.Imprimir(txtS, "Precio mayor:  " + preMay);
 		Tienda.Imprimir(txtS, "Precio menor:  " + preMen);
 		Tienda.Imprimir(txtS, "Promedio del preicio : " + promP + "\n");
@@ -417,6 +444,6 @@ public class GenRepor extends JFrame implements ActionListener {
 		
 		Tienda.Imprimir(txtS, "Fondo mayor:  " + fonMay);
 		Tienda.Imprimir(txtS, "Fondo menor:  " + fonMen);
-		Tienda.Imprimir(txtS, "Promedio del Fondo : " + promFon + "\n");
+		Tienda.Imprimir(txtS, "Promedio del Fondo : " + promFon + "\n");**/
 	}
 }
