@@ -1,22 +1,25 @@
 package semana06;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
 public class ConfPremio extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textNumeroCliente;
 	private JTextField textPremioSorpresa;
@@ -115,8 +118,7 @@ public class ConfPremio extends JFrame implements ActionListener {
 		getNuevosValores();
 			if(num < 0){
 				Tienda.mensaje(this, "Debe ingresar un n\u00famero entero");
-				textNumeroCliente.requestFocus();
-				textNumeroCliente.selectAll();
+				Tienda.focusSelectAll(textNumeroCliente);
 			}else if(sor.isEmpty() || sor.length() < 1){
 				//Tienda.mensaje(this, "Por favor ingrese alg\u00fan premio");
 				actualizarDatos();

@@ -1,23 +1,24 @@
 package semana06;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
 public class ConfgOptima extends JDialog implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textCantOpt;
 	private JPanel contentPane;
 	private JButton btnAceptar;
@@ -62,9 +63,8 @@ public class ConfgOptima extends JDialog implements ActionListener {
 				char c = e.getKeyChar();
 				
 				if( Character.isLetter(c)){
-					JOptionPane.showMessageDialog(textCantOpt, "Ingrese solo n\u00fameros enteros");
-					textCantOpt.requestFocus();
-					textCantOpt.selectAll();
+					Tienda.mensaje(textCantOpt, "Ingrese solo n\u00fameros enteros");
+					Tienda.focusSelectAll(textCantOpt);
 					
 			}/*else if( Character.isWhitespace(c)){
 					JOptionPane.showMessageDialog(textCantOpt, "Cuidado con espacios en blanco");
@@ -111,8 +111,7 @@ public class ConfgOptima extends JDialog implements ActionListener {
 			JOptionPane.showMessageDialog(textCantOpt, "Por favor ingrese alg\u00fan n\u00famero entero válido");
 				//	+ "\n");
 				//	+ "Cuidado con los espacios en blanco");
-			textCantOpt.requestFocus();
-			textCantOpt.selectAll();
+			Tienda.focusSelectAll(textCantOpt);
 		}
 	}
 	

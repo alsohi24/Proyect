@@ -1,26 +1,25 @@
 package semana06;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
 public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textDesc1;
 	private JTextField textDesc2;
@@ -57,8 +56,8 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("1 a 3 libros");
-		lblNewLabel.setBounds(23, 50, 70, 14);
+		JLabel lblNewLabel = new JLabel("1 a 3 maletas");
+		lblNewLabel.setBounds(28, 50, 100, 14);
 		contentPane.add(lblNewLabel);
 
 		textDesc1 = new JTextField();
@@ -73,12 +72,12 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 				}
 			}
 		});
-		textDesc1.setBounds(128, 50, 94, 20);
+		textDesc1.setBounds(138, 47, 94, 20);
 		contentPane.add(textDesc1);
 		textDesc1.setColumns(10);
 
-		JLabel lblA = new JLabel("4 a 5 libros");
-		lblA.setBounds(23, 89, 70, 14);
+		JLabel lblA = new JLabel("4 a 5 maletas");
+		lblA.setBounds(28, 89, 100, 14);
 		contentPane.add(lblA);
 
 		textDesc2 = new JTextField();
@@ -93,7 +92,7 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 				}
 			}
 		});
-		textDesc2.setBounds(128, 89, 94, 20);
+		textDesc2.setBounds(138, 86, 94, 20);
 		contentPane.add(textDesc2);
 		textDesc2.setColumns(10);
 
@@ -109,7 +108,7 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 				}
 			}
 		});
-		textDesc3.setBounds(128, 128, 94, 20);
+		textDesc3.setBounds(138, 125, 94, 20);
 		contentPane.add(textDesc3);
 		textDesc3.setColumns(10);
 
@@ -124,32 +123,32 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 				}
 			}
 		});
-		textDesc4.setBounds(128, 167, 94, 20);
+		textDesc4.setBounds(138, 164, 94, 20);
 		contentPane.add(textDesc4);
 		textDesc4.setColumns(10);
 
-		JLabel lblA_1 = new JLabel("6 a 8 libros");
-		lblA_1.setBounds(23, 128, 70, 14);
+		JLabel lblA_1 = new JLabel("6 a 8 maletas");
+		lblA_1.setBounds(28, 128, 100, 14);
 		contentPane.add(lblA_1);
 
-		JLabel lblMasDe = new JLabel("Mas de 8 libros");
-		lblMasDe.setBounds(23, 167, 95, 14);
+		JLabel lblMasDe = new JLabel("Mas de 8 maletas");
+		lblMasDe.setBounds(20, 167, 108, 14);
 		contentPane.add(lblMasDe);
 
 		JLabel label = new JLabel("%");
-		label.setBounds(232, 50, 46, 14);
+		label.setBounds(242, 53, 32, 14);
 		contentPane.add(label);
 
 		JLabel label_1 = new JLabel("%");
-		label_1.setBounds(232, 89, 46, 14);
+		label_1.setBounds(242, 92, 32, 14);
 		contentPane.add(label_1);
 
 		JLabel label_2 = new JLabel("%");
-		label_2.setBounds(232, 128, 46, 14);
+		label_2.setBounds(242, 131, 32, 14);
 		contentPane.add(label_2);
 
 		JLabel label_3 = new JLabel("%");
-		label_3.setBounds(232, 167, 46, 14);
+		label_3.setBounds(242, 170, 32, 14);
 		contentPane.add(label_3);
 
 		btnAceptar = new JButton("Aceptar");
@@ -192,10 +191,10 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 	}
 
 	public void getPorDeDesc() {
-		p1 = Tienda.porcentaje1 = Double.parseDouble(textDesc1.getText());
-		p2 = Tienda.porcentaje2 = Double.parseDouble(textDesc2.getText());
-		p3 = Tienda.porcentaje3 = Double.parseDouble(textDesc3.getText());
-		p4 = Tienda.porcentaje4 = Double.parseDouble(textDesc4.getText());
+		p1 = Tienda.porcentaje1 = Tienda.getDouble(textDesc1);
+		p2 = Tienda.porcentaje2 = Tienda.getDouble(textDesc2);
+		p3 = Tienda.porcentaje3 = Tienda.getDouble(textDesc3);
+		p4 = Tienda.porcentaje4 = Tienda.getDouble(textDesc4);
 		
 	}
 

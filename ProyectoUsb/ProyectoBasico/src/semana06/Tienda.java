@@ -4,8 +4,6 @@ import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -18,6 +16,10 @@ import javax.swing.border.EmptyBorder;
 
 public class Tienda extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JMenuBar menuBar;
 	private JMenu mnArchivo;
@@ -359,6 +361,10 @@ public class Tienda extends JFrame implements ActionListener {
 	
 	public static void Imprimir( JTextArea txtS, String cad){
 		txtS.append("       "+ cad + "\n");
+	}
+	
+	public static double getDouble(JTextField text){
+		return Double.parseDouble(text.getText());
 	}
 	
 	public static void focusSelectAll( JTextField text){

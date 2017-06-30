@@ -3,20 +3,23 @@ package semana06;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
 public class ConfObsequio extends JDialog implements ActionListener, KeyListener{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtCantidadMaletas;
 	private JTextField txtObsequio;
@@ -69,12 +72,11 @@ public class ConfObsequio extends JDialog implements ActionListener, KeyListener
 		               
 		              arg0.consume(); 
 		               
-		              JOptionPane.showMessageDialog(txtCantidadMaletas,"Ingrese Solo N\u00fameros");
-		              txtCantidadMaletas.requestFocus();
-		              txtCantidadMaletas.selectAll();
+		              Tienda.mensaje(txtCantidadMaletas,"Ingrese Solo N\u00fameros");
+		              Tienda.focusSelectAll(txtCantidadMaletas);
 		               
 		          } else if( Character.isWhitespace(c)){
-		        	  JOptionPane.showMessageDialog(txtCantidadMaletas,"Cuidado con los espacios en blanco");
+		        	  Tienda.mensaje(txtCantidadMaletas,"Cuidado con los espacios en blanco");
 		        	  txtCantidadMaletas.selectAll();
 		          }
 		         
@@ -94,7 +96,8 @@ public class ConfObsequio extends JDialog implements ActionListener, KeyListener
 		               
 		              arg0.consume(); 
 		               
-		              JOptionPane.showMessageDialog(txtObsequio, "Ingresa Solo Letras"); 
+		              Tienda.mensaje(txtObsequio, "Ingresa Solo Letras");
+		              Tienda.focusSelectAll(txtObsequio);
 		               
 		          } 
 			}
@@ -141,10 +144,10 @@ public class ConfObsequio extends JDialog implements ActionListener, KeyListener
 			ingresarDatos();
 			if(can < 0){
 				Tienda.mensaje(this, "N\u00famero incorrecto");
-				txtCantidadMaletas.requestFocus();
-				txtCantidadMaletas.selectAll();
+				Tienda.focusSelectAll(txtCantidadMaletas);
 			}else if(obs.isEmpty() || obs.length() < 1 ){
 				Tienda.mensaje(this, "Te falto espeificar alg\u00fan obsequio");
+				Tienda.focusSelectAll(txtObsequio);
 			}
 				else{
 			
@@ -153,8 +156,7 @@ public class ConfObsequio extends JDialog implements ActionListener, KeyListener
 			}
 			}catch (Exception o){
 				Tienda.mensaje(this,"Por favor ingrese los datos solicitados");
-				txtCantidadMaletas.requestFocus();
-				txtCantidadMaletas.selectAll();				
+				Tienda.focusSelectAll(txtObsequio);				
 			}
 			
 			

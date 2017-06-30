@@ -1,26 +1,24 @@
 package semana06;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 public class Modificar extends JDialog implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblCdigo;
 	private JLabel lblModelo;
 	private JLabel lblPrecio;
@@ -33,7 +31,7 @@ public class Modificar extends JDialog implements ActionListener {
 	private JTextField textAlto;
 	private JTextField textAncho;
 	private JTextField textFondo;
-	private JComboBox cboCodigo;
+	private JComboBox<?> cboCodigo;
 	private JButton btnGrabar_1;
 
 	/**
@@ -56,6 +54,7 @@ public class Modificar extends JDialog implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Modificar() {
 		/**
 		 * setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); setBounds(100, 100,
@@ -304,39 +303,39 @@ public class Modificar extends JDialog implements ActionListener {
 		switch (cod) {
 		case 0:
 			Tienda.modelo0 = textModelo.getText();
-			Tienda.precio0 = Double.parseDouble(textPrecio.getText());
-			Tienda.ancho0 = Double.parseDouble(textAncho.getText());
-			Tienda.alto0 = Double.parseDouble(textAlto.getText());
-			Tienda.fondo0 = Double.parseDouble(textFondo.getText());
+			Tienda.precio0 = Tienda.getDouble(textPrecio);
+			Tienda.ancho0 = Tienda.getDouble(textAncho);
+			Tienda.alto0 = Tienda.getDouble(textAlto);
+			Tienda.fondo0 = Tienda.getDouble(textFondo);
 			break;
 		case 1:
 			Tienda.modelo1 = textModelo.getText();
-			Tienda.precio1 = Double.parseDouble(textPrecio.getText());
-			Tienda.ancho1 = Double.parseDouble(textAncho.getText());
-			Tienda.alto1 = Double.parseDouble(textAlto.getText());
-			Tienda.fondo1 = Double.parseDouble(textFondo.getText());
+			Tienda.precio1 = Tienda.getDouble(textPrecio);
+			Tienda.ancho1 = Tienda.getDouble(textAncho);
+			Tienda.alto1 = Tienda.getDouble(textAlto);
+			Tienda.fondo1 = Tienda.getDouble(textFondo);
 			break;
 
 		case 2:
 			Tienda.modelo2 = textModelo.getText();
-			Tienda.precio2 = Double.parseDouble(textPrecio.getText());
-			Tienda.ancho2 = Double.parseDouble(textAncho.getText());
-			Tienda.alto2 = Double.parseDouble(textAlto.getText());
-			Tienda.fondo2 = Double.parseDouble(textFondo.getText());
+			Tienda.precio2 = Tienda.getDouble(textPrecio);
+			Tienda.ancho2 = Tienda.getDouble(textAncho);
+			Tienda.alto2 = Tienda.getDouble(textAlto);
+			Tienda.fondo2 = Tienda.getDouble(textFondo);
 			break;
 		case 3:
 			Tienda.modelo3 = textModelo.getText();
-			Tienda.precio3 = Double.parseDouble(textPrecio.getText());
-			Tienda.ancho3 = Double.parseDouble(textAncho.getText());
-			Tienda.alto3 = Double.parseDouble(textAlto.getText());
-			Tienda.fondo3 = Double.parseDouble(textFondo.getText());
+			Tienda.precio3 = Tienda.getDouble(textPrecio);
+			Tienda.ancho3 = Tienda.getDouble(textAncho);
+			Tienda.alto3 = Tienda.getDouble(textAlto);
+			Tienda.fondo3 = Tienda.getDouble(textFondo);
 			break;
 		default:
 			Tienda.modelo4 = textModelo.getText();
-			Tienda.precio4 = Double.parseDouble(textPrecio.getText());
-			Tienda.ancho4 = Double.parseDouble(textAncho.getText());
-			Tienda.alto4 = Double.parseDouble(textAlto.getText());
-			Tienda.fondo4 = Double.parseDouble(textFondo.getText());
+			Tienda.precio4 = Tienda.getDouble(textPrecio);
+			Tienda.ancho4 = Tienda.getDouble(textAncho);
+			Tienda.alto4 = Tienda.getDouble(textAlto);
+			Tienda.fondo4 = Tienda.getDouble(textFondo);
 		}
 		
 	}
@@ -346,11 +345,14 @@ public class Modificar extends JDialog implements ActionListener {
 	}
 	
 	public void mostrarDatosPorDefecto(){
+		Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo0,
+				Tienda.precio0, Tienda.ancho0, Tienda.alto0, Tienda.fondo0);
+		/**
 		textModelo.setText(Tienda.modelo0);
 		textPrecio.setText(Tienda.precio0 +"");
 		textAncho.setText(Tienda.ancho0 +"");
 		textAlto.setText(Tienda.alto0 +"");
-		textFondo.setText(Tienda.fondo0 +"");		
+		textFondo.setText(Tienda.fondo0 +"");		**/
 	}	
 	
 	

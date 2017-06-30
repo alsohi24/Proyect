@@ -1,18 +1,21 @@
 package semana06;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JPanel;
-import java.awt.Font;
 import javax.swing.UIManager;
 
 public class DialogoListar extends JDialog implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JScrollPane scrollPane;
 	private static JTextArea txtS;
 	private JButton btnCerrar;

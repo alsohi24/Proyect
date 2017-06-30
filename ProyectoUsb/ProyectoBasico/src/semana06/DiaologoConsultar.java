@@ -12,6 +12,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class DiaologoConsultar extends JDialog implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblCdigo;
 	private JLabel lblModelo;
 	private JLabel lblPrecio;
@@ -24,7 +28,7 @@ public class DiaologoConsultar extends JDialog implements ActionListener {
 	private JTextField textAlto;
 	private JTextField textAncho;
 	private JTextField textFondo;
-	private JComboBox cboCodigo;
+	private JComboBox<?> cboCodigo;
 	
 
 	/**
@@ -47,6 +51,7 @@ public class DiaologoConsultar extends JDialog implements ActionListener {
 	/**
 	 * Create the dialog.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public DiaologoConsultar() {
 		setModal(true);
 		setResizable(false);
@@ -67,7 +72,7 @@ public class DiaologoConsultar extends JDialog implements ActionListener {
 		getContentPane().add(lblPrecio);
 		
 		lblAlto= new JLabel("Alto    ");
-		lblAlto.setBounds(80, 195, 56, 14);
+		lblAlto.setBounds(80, 164, 56, 14);
 		getContentPane().add(lblAlto);
 		
 		lblAncho= new JLabel("Ancho  ");
@@ -75,7 +80,7 @@ public class DiaologoConsultar extends JDialog implements ActionListener {
 		getContentPane().add(lblAncho);
 		
 		lblFondo= new JLabel("Fondo  ");
-		lblFondo.setBounds(80, 164, 56, 14);
+		lblFondo.setBounds(80, 196, 56, 14);
 		getContentPane().add(lblFondo);
 
 		btnCerrar = new JButton("Cerrar");
@@ -109,13 +114,13 @@ public class DiaologoConsultar extends JDialog implements ActionListener {
 		
 		textAlto = new JTextField();
 		textAlto.setEditable(false);
-		textAlto.setBounds(181, 192, 160, 20);
+		textAlto.setBounds(181, 161, 160, 20);
 		getContentPane().add(textAlto);
 		textAlto.setColumns(10);
 		
 		textFondo = new JTextField();
 		textFondo.setEditable(false);
-		textFondo.setBounds(181, 161, 160, 20);
+		textFondo.setBounds(181, 193, 160, 20);
 		getContentPane().add(textFondo);
 		textFondo.setColumns(10);
 		
