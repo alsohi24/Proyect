@@ -1,6 +1,7 @@
 package semana06;
 
 import java.awt.EventQueue;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -46,16 +47,21 @@ public class ConfgOptima extends JDialog implements ActionListener {
 	 */
 	public ConfgOptima() {
 		setTitle("Configurar cantidad \u00F3ptima de maletas vendidas");
-		setModal(true);
 		setBounds(100, 100, 450, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JLabel lblCantidadOptimaDe = new JLabel("Cantidad optima de maletas vendidas");
-		lblCantidadOptimaDe.setBounds(61, 41, 239, 24);
 		contentPane.add(lblCantidadOptimaDe);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(this);
+		contentPane.add(btnAceptar);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(this);
 		
 		textCantOpt = new JTextField();
 		textCantOpt.addKeyListener(new KeyAdapter() {
@@ -72,18 +78,8 @@ public class ConfgOptima extends JDialog implements ActionListener {
 				}*/
 			}
 		});
-		textCantOpt.setBounds(102, 76, 86, 20);
 		contentPane.add(textCantOpt);
 		textCantOpt.setColumns(10);
-		
-		btnAceptar = new JButton("Aceptar");
-		btnAceptar.addActionListener(this);
-		btnAceptar.setBounds(310, 25, 89, 35);
-		contentPane.add(btnAceptar);
-		
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(this);
-		btnCancelar.setBounds(310, 82, 89, 35);
 		contentPane.add(btnCancelar);
 
 		setCantOpt();

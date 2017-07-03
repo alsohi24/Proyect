@@ -48,8 +48,8 @@ public class DialogoListar extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public DialogoListar() {
-		setTitle("Listar");
 		setResizable(false);
+		setTitle("Listar");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 

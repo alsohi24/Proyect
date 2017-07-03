@@ -6,6 +6,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
@@ -35,6 +36,11 @@ public class DiaologoConsultar extends JDialog implements ActionListener {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -53,7 +59,6 @@ public class DiaologoConsultar extends JDialog implements ActionListener {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public DiaologoConsultar() {
-		setModal(true);
 		setResizable(false);
 		setTitle("Consultar Libro");
 		setBounds(100, 100, 450, 300);

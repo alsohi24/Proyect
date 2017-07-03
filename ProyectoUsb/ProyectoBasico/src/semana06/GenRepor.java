@@ -8,14 +8,15 @@ import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-public class GenRepor extends JFrame implements ActionListener {
+public class GenRepor extends JDialog implements ActionListener {
 
 	/**
 	 * 
@@ -31,12 +32,17 @@ public class GenRepor extends JFrame implements ActionListener {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GenRepor frame = new GenRepor();
-					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					frame.setVisible(true);
+					GenRepor dialog = new GenRepor();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -62,9 +68,7 @@ public class GenRepor extends JFrame implements ActionListener {
 
 		comboBox = new JComboBox();
 		comboBox.addActionListener(this);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Ventas por maleta", "Maletas con venta optima ",
-				"Maletas con precios menores al precio promPedio", "Maletas con precios mayores al precio promPedio",
-				"Precios menor, mayor y promPedio" }));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventas por maleta", "Maletas con venta optima ", "Maletas con precios menores al precio promedio", "Maletas con precios mayores al precio promedio", "Precio menor, mayor y promedio"}));
 		comboBox.setBounds(10, 27, 301, 20);
 		contentPane.add(comboBox);
 
@@ -188,9 +192,9 @@ public class GenRepor extends JFrame implements ActionListener {
 			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV2 + "\n");
 		}
 		Tienda.VentaOptima(txtS, totVen3, Tienda.cantidadOptima, totMaV3, Tienda.codigo2, Tienda.modelo2);
-		if (totVen4 >= Tienda.cantidadOptima) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo3);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo3);
+		if (totVen3 >= Tienda.cantidadOptima) {
+			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo2);
+			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo2);
 			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV4 + "\n");
 		}
 		if (true) {

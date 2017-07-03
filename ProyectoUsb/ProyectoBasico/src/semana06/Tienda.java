@@ -150,7 +150,7 @@ public class Tienda extends JFrame implements ActionListener {
 		mntmConsultar.addActionListener(this);
 		mnMantenimiento.add(mntmConsultar);
 		
-		mntmModificar = new JMenuItem("Modificar libro");
+		mntmModificar = new JMenuItem("Modificar ");
 		mntmModificar.addActionListener(this); 
 		mnMantenimiento.add(mntmModificar);
 		
@@ -176,7 +176,7 @@ public class Tienda extends JFrame implements ActionListener {
 		mntmConfigurarObsequios.addActionListener(this);
 		Configuraciones.add(mntmConfigurarObsequios);
 		
-		mntmConfigurarLaCantidad = new JMenuItem("Configurar la cantidad optima de libros vendidos");
+		mntmConfigurarLaCantidad = new JMenuItem("Configurar la cantidad optima de maletas vendidas");
 		mntmConfigurarLaCantidad.addActionListener(this);
 		Configuraciones.add(mntmConfigurarLaCantidad);
 		
@@ -362,6 +362,12 @@ public class Tienda extends JFrame implements ActionListener {
 	public static void Imprimir( JTextArea txtS, String cad){
 		txtS.append("       "+ cad + "\n");
 	}
+	/**
+	public static void limiteCifras(int MiTxt){
+		if(MiTxt.getText().length()==10){
+			e.consume();
+		}
+	}*/
 	
 	public static double getDouble(JTextField text){
 		return Double.parseDouble(text.getText());

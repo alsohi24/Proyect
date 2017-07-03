@@ -12,6 +12,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 public class ConfObsequio extends JDialog implements ActionListener, KeyListener{
@@ -30,6 +31,12 @@ public class ConfObsequio extends JDialog implements ActionListener, KeyListener
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -47,7 +54,7 @@ public class ConfObsequio extends JDialog implements ActionListener, KeyListener
 	 * Create the frame.
 	 */
 	public ConfObsequio() {
-		setModal(true);
+		setResizable(false);
 		setBounds(100, 100, 500, 180);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

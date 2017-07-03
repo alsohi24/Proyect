@@ -7,14 +7,18 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import java.awt.GridLayout;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
-public class ConfPremio extends JFrame implements ActionListener {
+public class ConfPremio extends JDialog implements ActionListener {
 
 	/**
 	 * 
@@ -30,11 +34,16 @@ public class ConfPremio extends JFrame implements ActionListener {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					ConfPremio dialog = new ConfPremio();
-					dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,19 +56,15 @@ public class ConfPremio extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public ConfPremio() {
-		setBounds(100, 100, 450, 200);
+		setTitle("Configuraci\u00F3n del premio sorpresa");
+		setBounds(100, 100, 450, 205);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new GridLayout(0, 2, 0, 0));
 
 		JLabel lblNumeroDeCliente = new JLabel("Numero de cliente");
-		lblNumeroDeCliente.setBounds(83, 48, 121, 14);
 		contentPane.add(lblNumeroDeCliente);
-
-		JLabel lblPremioSorpresa = new JLabel("Premio sorpresa");
-		lblPremioSorpresa.setBounds(83, 83, 100, 14);
-		contentPane.add(lblPremioSorpresa);
 
 		textNumeroCliente = new JTextField();
 		textNumeroCliente.addKeyListener(new KeyAdapter() {
@@ -74,24 +79,24 @@ public class ConfPremio extends JFrame implements ActionListener {
 				
 			}
 		});
-		textNumeroCliente.setBounds(231, 45, 122, 20);
 		contentPane.add(textNumeroCliente);
 		textNumeroCliente.setColumns(10);
+		
+				JLabel lblPremioSorpresa = new JLabel("Premio sorpresa");
+				contentPane.add(lblPremioSorpresa);
 
 		textPremioSorpresa = new JTextField();
-		textPremioSorpresa.setBounds(231, 80, 122, 20);
 		contentPane.add(textPremioSorpresa);
 		textPremioSorpresa.setColumns(10);
 
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(this);
-		btnAceptar.setBounds(102, 127, 89, 23);
 		contentPane.add(btnAceptar);
 
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(this);
-		btnCancelar.setBounds(248, 127, 89, 23);
 		contentPane.add(btnCancelar);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnCancelar, btnAceptar, lblPremioSorpresa, textNumeroCliente, contentPane, textPremioSorpresa, lblNumeroDeCliente}));
 		
 		SalidaDeDatos();
 	}
