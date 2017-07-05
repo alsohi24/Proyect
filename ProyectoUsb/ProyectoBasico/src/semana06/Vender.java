@@ -91,13 +91,25 @@ public class Vender extends JDialog implements ActionListener {
 		textPrecio.setColumns(10);
 
 		textCantidad = new JTextField();
+		textCantidad.addKeyListener(new KeyAdapter() {
+			
+			public void keyPressed(KeyEvent arg0) {
+				char c = arg0.getKeyChar();
+				if(Character.isLetter(c)){
+					arg0.consume();
+					
+					Tienda.mensaje(textCantidad,"Ingrese Solo N\u00fameros");
+		              Tienda.focusSelectAll(textCantidad);
+				}
+			}
+		});
 		textCantidad.setBounds(123, 73, 96, 20);
 		contentPane.add(textCantidad);
 		textCantidad.setColumns(10);
 
-		JLabel lblCantidad = new JLabel("Cantidad");
-		lblCantidad.setBounds(51, 76, 62, 14);
-		contentPane.add(lblCantidad);
+		JLabel lblctidad = new JLabel("Cantidad");
+		lblctidad.setBounds(51, 76, 62, 14);
+		contentPane.add(lblctidad);
 
 		btnVender = new JButton("Vender");
 		btnVender.addActionListener(this);
@@ -138,7 +150,7 @@ public class Vender extends JDialog implements ActionListener {
 	}
 
 	public void actionPerformedComboBox(ActionEvent arg0) {
-		cod = comboBox.getSelectedIndex();
+		 int cod = getMarca();
 
 		switch (cod) {
 		case 0:
@@ -163,97 +175,99 @@ public class Vender extends JDialog implements ActionListener {
 		}
 	}
 
-	double icom, ides, ipag;
-	int can, cod, totV;
-
+	int totV;
 	public void actionPerformedbtnVender(ActionEvent arg0) {
+		double icom, ides, ipag;
+		int can, mar;
 		totV++;
+		mar = getMarca();
+		can = getctidad();
+		icom = calcularimportecompra(mar,can);
+		contAcum(mar, can , icom);
+		ides = calculardescuento(can, icom);
+		ipag = calcularpagar(icom, ides);
+		mostrarresultados(icom, ides, ipag);
 		clientePremiado();
-		ingresardatos();
-		calcularimportecompra();
-		contAcum();
-		calculardescuento();
-		calcularpagar();
-		mostrarresultados();
 
 	}
 
-	void ingresardatos() {
-
-		cod = comboBox.getSelectedIndex();
-		can = Integer.parseInt(textCantidad.getText());
+	int getctidad() {		
+		return Integer.parseInt(textCantidad.getText());
 
 	}
+	
+	int getMarca(){
+		return comboBox.getSelectedIndex();
+	}
 
-	void calcularimportecompra() {
-		switch (cod) {
+	double calcularimportecompra(int m, int c) {
+		switch (m) {
 		case 0:
-			icom = Tienda.precio0 * can;
-			break;
+			return Tienda.precio0 * c;
 		case 1:
-			icom = Tienda.precio1 * can;
-			break;
+			return Tienda.precio1 * c;
+			
 		case 2:
-			icom = Tienda.precio2 * can;
-			break;
+			return Tienda.precio2 * c;
+			
 		case 3:
-			icom = Tienda.precio3 * can;
-			break;
+			return Tienda.precio3 * c;
+			
 		default:
-			icom = Tienda.precio4 * can;
+			return Tienda.precio4 * c;
 		}
 	}
 
-	void calculardescuento() {
-		if (can < 4)
-			ides = Tienda.porcentaje1 / 100 * icom;
-		else if (can < 6)
-			ides = Tienda.porcentaje2 / 100 * icom;
-		else if (can < 9)
-			ides = Tienda.porcentaje3 / 100 * icom;
+	double calculardescuento(int c, double ic) {
+		if (c < 4)
+			return Tienda.porcentaje1 / 100 * ic;
+		else if (c < 6)
+			return Tienda.porcentaje2 / 100 * ic;
+		else if (c < 9)
+			return Tienda.porcentaje3 / 100 * ic;
 		else
-			ides = Tienda.porcentaje4 / 100 * icom;
+			return Tienda.porcentaje4 / 100 * ic;
 	}
 
-	void contAcum() {
-		switch (cod) {
+	void contAcum(int m, int c, double ic) {
+		switch (m) {
 		case 0:
-			GenRepor.totMaV1 += can;
+			GenRepor.totMaV1 += c;
 			GenRepor.totVen1++;
-			GenRepor.icomAcu1 += icom;
+			GenRepor.icomAcu1 += ic;
 			break;
 		case 1:
-			GenRepor.totMaV2 += can;
+			GenRepor.totMaV2 += c;
 			GenRepor.totVen2++;
-			GenRepor.icomAcu2 += icom;
+			GenRepor.icomAcu2 += ic;
 			break;
 		case 2:
-			GenRepor.totMaV3 += can;
+			GenRepor.totMaV3 += c;
 			GenRepor.totVen3++;
-			GenRepor.icomAcu3 += icom;
+			GenRepor.icomAcu3 += ic;
 			break;
 		case 3:
-			GenRepor.totMaV4 += can;
+			GenRepor.totMaV4 += c;
 			GenRepor.totVen4++;
-			GenRepor.icomAcu4 += icom;
+			GenRepor.icomAcu4 += ic;
 			break;
 		default:
-			GenRepor.totMaV5 += can;
+			GenRepor.totMaV5 += c;
 			GenRepor.totVen5++;
-			GenRepor.icomAcu5 += icom;
+			GenRepor.icomAcu5 += ic;
 		}
 	}
 
-	void calcularpagar() {
-		ipag = icom - ides;
+	double calcularpagar(double ic, double id) {
+		return ic - id;
 	}
 
-	void mostrarresultados() {
+	void mostrarresultados(double ic, double id,double ip) {
 
 		txtS.setText("  Su boleta:" + "\n\n");
-		Tienda.Imprimir(txtS, "Importe Compra      :	" + icom);
-		Tienda.Imprimir(txtS, "Importe Descuento :	" + ides);
-		Tienda.Imprimir(txtS, "Importe Pagar          :	" + ipag);
+		Tienda.Imprimir(txtS, "Importe Compra      :	" + ic);
+		Tienda.Imprimir(txtS, "Importe Descuento :	" + id);
+		Tienda.Imprimir(txtS, "Importe Pagar          :	" + ip);
 		Tienda.Imprimir(txtS, "Obsequio                  :	" + Tienda.obsequio);
 		Tienda.Imprimir(txtS, "Premio Sorpresa     :	" + Tienda.premioSorpresa);
 

@@ -417,11 +417,11 @@ public class Tienda extends JFrame implements ActionListener {
 		Tienda.Imprimir(txtS, "Importe total acumulado :" + ic + "\n");
 	}
 	
-	public static void VentaOptima( JTextArea txtS, int totV, int CanOp, int totMaV, String Tcodigo, String Tmodelo ){
-		if (totV > CanOp) {
+	public static void VentaOptima( JTextArea txtS, int totMaV, int CanOp, String Tcodigo, String Tmodelo ){
+		if (totMaV > CanOp) {
 			Tienda.Imprimir(txtS, "Codigo  :" + Tcodigo);
 			Tienda.Imprimir(txtS, "Modelo  :" + Tmodelo);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV + "x \n");
+			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV + "\n");
 		}
 	}
 	
@@ -466,5 +466,10 @@ public class Tienda extends JFrame implements ActionListener {
 			textAncho.setText(an +"");
 			textAlto.setText(al +"");
 			textFondo.setText(fon +"");
+	}
+	
+	public static double promediosG(double n1, double n2, double n3, double n4, double n5){
+		return ( n1 + n2 + n3 + n4 + n5 )/5; 
+		
 	}
 }

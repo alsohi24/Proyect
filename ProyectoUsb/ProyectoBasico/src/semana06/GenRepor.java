@@ -104,10 +104,10 @@ public class GenRepor extends JDialog implements ActionListener {
 	public static double icomAcu1, icomAcu2, icomAcu3, icomAcu4, icomAcu5,
 						icomGen,
 
-			promP = (Tienda.precio0 + Tienda.precio1 + Tienda.precio2 + Tienda.precio3 + Tienda.precio4) / 5,
-			promAn = (Tienda.ancho0 + Tienda.ancho1 + Tienda.ancho2 + Tienda.ancho3 + Tienda.ancho4) / 5,
-			promAl = (Tienda.alto0 + Tienda.alto1 + Tienda.alto2 + Tienda.alto3 + Tienda.alto4) / 5,
-			promFon = (Tienda.fondo0 + Tienda.fondo1 + Tienda.fondo2 + Tienda.fondo3 + Tienda.fondo4) / 5;
+			promP,
+			promAn,
+			promAl,
+			promFon;
 	int totM;
 
 	public void actionPerformedcomboBox(ActionEvent e) {
@@ -121,9 +121,11 @@ public class GenRepor extends JDialog implements ActionListener {
 			malVenOp();
 			break;
 		case 2:
+			actualizarPromedios();
 			menAlpromP();
 			break;
 		case 3:
+			actualizarPromedios();
 			mayAlpromP();
 			break;
 		default:
@@ -177,41 +179,17 @@ public class GenRepor extends JDialog implements ActionListener {
 
 	void malVenOp() {
 		txtS.setText("     " + "Reporte de Ventas Optimas" + "\n\n");
-		if (totVen1 > 50) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo0);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo0);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV1 + "x \n");
-		} 
-		Tienda.Imprimir(txtS, "Codigo :" + Tienda.codigo0); 
-		Tienda.Imprimir(txtS,"Modelo :" + Tienda.cantidadOptima); 
-		Tienda.Imprimir(txtS,"Cantidad total de maletasvendidas : " + totMaV1 + "n \n"); 
-			 
-		if (totVen2 >= 50) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo1);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo1);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV2 + "\n");
-		}
-		Tienda.VentaOptima(txtS, totVen3, Tienda.cantidadOptima, totMaV3, Tienda.codigo2, Tienda.modelo2);
-		if (totVen3 >= Tienda.cantidadOptima) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo2);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo2);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV4 + "\n");
-		}
-		if (true) {
-			Tienda.Imprimir(txtS, "Codigo  :" + Tienda.codigo4);
-			Tienda.Imprimir(txtS, "Modelo  :" + Tienda.modelo4);
-			Tienda.Imprimir(txtS, "Cantidad total de maletas vendidas  : " + totMaV5 + "\n");
-		}
-		if (true) {
-			Tienda.Imprimir(txtS, "Funciona");
-		}
+		Tienda.VentaOptima(txtS, totMaV1, Tienda.cantidadOptima, Tienda.codigo0, Tienda.modelo0);
+		Tienda.VentaOptima(txtS, totMaV2, Tienda.cantidadOptima, Tienda.codigo1, Tienda.modelo1);
+		Tienda.VentaOptima(txtS, totMaV3, Tienda.cantidadOptima, Tienda.codigo2, Tienda.modelo2);
+		Tienda.VentaOptima(txtS, totMaV4, Tienda.cantidadOptima, Tienda.codigo3, Tienda.modelo3);
 	}
 
 
 
 	void mayAlpromP() {
 		int conMal = 0;
-		txtS.setText("     " + "Precios mayores al promPedio" + "\n\n");
+		txtS.setText("     " + "Precios mayores al promedio" + "\n\n");
 		
 		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo0, Tienda.precio0, conMal);
 		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo1, Tienda.precio1, conMal);
@@ -452,5 +430,12 @@ public class GenRepor extends JDialog implements ActionListener {
 		Tienda.Imprimir(txtS, "Fondo mayor:  " + fonMay);
 		Tienda.Imprimir(txtS, "Fondo menor:  " + fonMen);
 		Tienda.Imprimir(txtS, "Promedio del Fondo : " + promFon + "\n");**/
+	}
+	
+	void actualizarPromedios(){
+		promP = Tienda.promediosG(Tienda.precio0, Tienda.precio1, Tienda.precio2, Tienda.precio3, Tienda.precio4);
+		promAn = Tienda.promediosG(Tienda.ancho0, Tienda.ancho1, Tienda.ancho2, Tienda.ancho3, Tienda.ancho4);
+		promAl = Tienda.promediosG(Tienda.alto0, Tienda.alto1, Tienda.alto2, Tienda.alto3, Tienda.alto4);
+		promFon = Tienda.promediosG(Tienda.fondo0, Tienda.fondo1, Tienda.fondo2, Tienda.fondo3, Tienda.fondo4);
 	}
 }
