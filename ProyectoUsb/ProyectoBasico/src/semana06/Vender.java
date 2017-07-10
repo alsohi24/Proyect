@@ -269,13 +269,14 @@ public class Vender extends JDialog implements ActionListener {
 		Tienda.Imprimir(txtS, "Importe Descuento :	" + id);
 		Tienda.Imprimir(txtS, "Importe Pagar          :	" + ip);
 		Tienda.Imprimir(txtS, "Obsequio                  :	" + Tienda.obsequio);
-		Tienda.Imprimir(txtS, "Premio Sorpresa     :	" + Tienda.premioSorpresa);
+		
 
 	}
 
 	void clientePremiado() {
 		if (totV == Tienda.numeroClientePremiado) {
 			Tienda.mensaje(this, "FELICIDADES ERES EL GANADOR");
+			Tienda.Imprimir(txtS, "Premio Sorpresa     :	" + Tienda.premioSorpresa);
 		}
 
 	}

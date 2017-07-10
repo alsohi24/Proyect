@@ -449,12 +449,12 @@ public class Tienda extends JFrame implements ActionListener {
 	}
 	
 		public static void imprimirListas(JTextArea txtS, String cod, String mod, double pre, double an, double al, double fon){
-		Tienda.Imprimir(txtS, "Codigo :" + cod);
-		Tienda.Imprimir(txtS,"Modelo :" + mod);
-		Tienda.Imprimir(txtS,"Precio :" + pre);
-		Tienda.Imprimir(txtS,"Ancho :" + an);
-		Tienda.Imprimir(txtS,"Alto :"+ al);
-		Tienda.Imprimir(txtS,"Fondo :"+ fon + "\n");
+		Tienda.Imprimir(txtS, "Codigo  :" + cod);
+		Tienda.Imprimir(txtS,"Modelo  :" + mod);
+		Tienda.Imprimir(txtS,"Precio  :" + pre);
+		Tienda.Imprimir(txtS,"Ancho   :" + an);
+		Tienda.Imprimir(txtS,"Alto    :"+ al);
+		Tienda.Imprimir(txtS,"Fondo   :"+ fon + "\n");
 	}
 	
 	public static void SetDatos(JTextField textModelo, JTextField textPrecio,

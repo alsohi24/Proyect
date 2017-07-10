@@ -114,20 +114,22 @@ public class ConfPremio extends JDialog implements ActionListener {
 		}
 	}
 	
-	int num;
-	String sor;
+	
 			
 	
 	public void actionPerformedbtnAceptar(ActionEvent arg0) {
+		int num;
+		String sor;
 		try{
-		getNuevosValores();
+			num = getNumCliente();
+			sor = getPremio();
+			actualizarDatos(num, sor);
 			if(num < 0){
 				Tienda.mensaje(this, "Debe ingresar un n\u00famero entero");
 				Tienda.focusSelectAll(textNumeroCliente);
 			}else if(sor.isEmpty() || sor.length() < 1){
-				//Tienda.mensaje(this, "Por favor ingrese alg\u00fan premio");
-				actualizarDatos();
-				Tienda.premioSorpresa = "No hay premio";
+				//Tienda.mensaje(this, "Por favor ingrese alg\u00fan premio");			
+				actualizarDatos(num, "No hay premio");
 			}	
 		}
 		catch(Exception u){
@@ -140,14 +142,18 @@ public class ConfPremio extends JDialog implements ActionListener {
 		textPremioSorpresa.setText(Tienda.premioSorpresa);
 	}
 	
-
-	public void getNuevosValores() {		
-		num = Integer.parseInt(textNumeroCliente.getText());
-		sor  = textPremioSorpresa.getText();
+	public void actualizarDatos(int n, String s){
+		Tienda.numeroClientePremiado = n;
+		Tienda.premioSorpresa =  s;
 	}
 	
-	public void actualizarDatos(){
-		Tienda.numeroClientePremiado = Integer.parseInt(textNumeroCliente.getText());
-		Tienda.premioSorpresa =  textPremioSorpresa.getText();
+	public int getNumCliente() {		
+		return Integer.parseInt(textNumeroCliente.getText());	
 	}
+	 
+	public String getPremio(){
+		return textPremioSorpresa.getText();
+	}
+	
+	
 }

@@ -142,13 +142,13 @@ public class ConfObsequio extends JDialog implements ActionListener, KeyListener
 		}
 		
 		//Variables para la validacion de datos
-		int can;
-		String obs;
-		
+				
 		public void actionPerformedbtnAceptar(ActionEvent e) {
-			
+			int can;
+			String obs;
 			try{
-			ingresarDatos();
+			can = getCantidad();
+			obs = newObsequio();
 			if(can < 0){
 				Tienda.mensaje(this, "N\u00famero incorrecto");
 				Tienda.focusSelectAll(txtCantidadMaletas);
@@ -186,10 +186,15 @@ public class ConfObsequio extends JDialog implements ActionListener, KeyListener
 	}
 	
 	//Valores de las varibles para la validacion de datos
-	void ingresarDatos(){
-		can = Integer.parseInt(txtCantidadMaletas.getText());
-		obs = txtObsequio.getText();
+	int getCantidad(){
+		return Integer.parseInt(txtCantidadMaletas.getText());
+		
 	}
+	
+	String newObsequio(){
+		return txtObsequio.getText();
+	}
+
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
