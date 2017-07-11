@@ -64,8 +64,8 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 		textDesc1.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				char c = e.getKeyChar();
-				
-				if(Character.isLetter(c)){
+
+				if (Character.isLetter(c)) {
 					JOptionPane.showMessageDialog(textDesc1, "Solo debe ingresar n\u00fameros enteros");
 					textDesc1.requestFocus();
 					textDesc1.selectAll();
@@ -84,8 +84,8 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 		textDesc2.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				char c = e.getKeyChar();
-				
-				if(Character.isLetter(c)){
+
+				if (Character.isLetter(c)) {
 					JOptionPane.showMessageDialog(textDesc2, "Solo debe ingresar n\u00fameros enteros");
 					textDesc2.requestFocus();
 					textDesc2.selectAll();
@@ -100,8 +100,8 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 		textDesc3.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				char c = e.getKeyChar();
-				
-				if(Character.isLetter(c)){
+
+				if (Character.isLetter(c)) {
 					JOptionPane.showMessageDialog(textDesc3, "Solo debe ingresar n\u00fameros enteros");
 					textDesc3.requestFocus();
 					textDesc3.selectAll();
@@ -116,7 +116,7 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 		textDesc4.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(Character.isLetter(c)){
+				if (Character.isLetter(c)) {
 					JOptionPane.showMessageDialog(textDesc4, "Solo debe ingresar n\u00fameros enteros");
 					textDesc4.requestFocus();
 					textDesc4.selectAll();
@@ -160,7 +160,7 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 		btnCancelar.addActionListener(this);
 		btnCancelar.setBounds(296, 135, 89, 30);
 		contentPane.add(btnCancelar);
-		
+
 		setPorcentajesDeDescuentos();
 	}
 
@@ -171,23 +171,31 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCancelar) {
 			actionPerformedbtnCancelar(e);
-		} if (e.getSource() == btnAceptar) {
+		}
+		if (e.getSource() == btnAceptar) {
 			actionPerformedbtnAceptar(e);
 		}
 	}
-	
-	
+
 	double p1, p2, p3, p4;
+	public static boolean V;
+
 	public void actionPerformedbtnAceptar(ActionEvent arg0) {
-		try{
+		try {
 			
-		getPorDeDesc(); 
-		validarPorDesc();
-				
+			getPorDeDesc();
+			validarPorcens();
+			
+			
+		} catch (Exception a) {
+			Tienda.mensaje(this, "Por favor solo ingrese n\u00fameros enteros");
 		}
-		catch (Exception a){
-			Tienda.mensaje(this , "Por favor solo ingrese n\u00fameros enteros");
+		if(V){
+			Tienda.mensaje(this, "Configuracion exitosa");
+			dispose();
 		}
+
+		
 	}
 
 	public void getPorDeDesc() {
@@ -195,39 +203,54 @@ public class ConfiguracionDescuentos extends JDialog implements ActionListener {
 		p2 = Tienda.porcentaje2 = Tienda.getDouble(textDesc2);
 		p3 = Tienda.porcentaje3 = Tienda.getDouble(textDesc3);
 		p4 = Tienda.porcentaje4 = Tienda.getDouble(textDesc4);
-		
+
 	}
 
-	public void setPorcentajesDeDescuentos(){ 
+	public void setPorcentajesDeDescuentos() {
 		textDesc1.setText(Tienda.porcentaje1 + "");
 		textDesc2.setText(Tienda.porcentaje2 + "");
 		textDesc3.setText(Tienda.porcentaje3 + "");
 		textDesc4.setText(Tienda.porcentaje4 + "");
-		
+
 	}
-	
-	public void validarPorDesc(){
-		if(p1 > 100||p2 > 100||p3 > 100||p4 > 100){
-			Tienda.mensaje(this, "Los descuentos deben ser menores al 100%");
-			this.requestFocus();
-			//this.selectAll();
+
+	public void validarPorcens() {
+	  boolean w = true, x = true, y = true, z = true;
+		w = Tienda.validarPor(p1, textDesc1);
+		x = Tienda.validarPor(p2, textDesc2);
+		y = Tienda.validarPor(p3, textDesc3);
+		z = Tienda.validarPor(p4, textDesc4);
+
+		if (w && x && z && y){
+			V = true;
 		}
-		/**if(p1 > 100){
-			Tienda.mensaje(this, "Los descuentos deben ser menores al 100%");
-			textDesc1.requestFocus();
-			textDesc1.selectAll();
-		} if(p2 > 100){
-			Tienda.mensaje(this, "Los descuentos deben ser menores al 100%");
-			textDesc2.requestFocus();
-			textDesc2.selectAll();
-		}	if(p3 > 100){
-			Tienda.mensaje(this, "Los descuentos deben ser menores al 100%");
-			textDesc3.requestFocus();
-			textDesc3.selectAll();
-		} if(p4 > 100){
-			Tienda.mensaje(this, "Los descuentos deben ser menores al 100%");
-			textDesc4.requestFocus();
-			textDesc4.selectAll();
-		}**/
+		
+		/*
+		Tienda.validarPor(p1, textDesc1);
+		Tienda.validarPor(p2, textDesc2);
+		Tienda.validarPor(p3, textDesc3);
+		Tienda.validarPor(p4, textDesc4);
+		*/
+		
+		
+		/**
+		  if(p1 > 100||p2 > 100||p3 > 100||p4 > 100){ Tienda.mensaje(this, "Los
+		  descuentos deben ser menores al 100%"); this.requestFocus();
+		  //this.selectAll(); }if(p1 < 0||p2 < 0||p3 < 0||p4 < 0){
+		  Tienda.mensaje(this, "Los descuentos deben ser positivos");
+		  this.requestFocus();
+		  
+		  this.selectAll(); }
+		 
+		/**
+		 * if(p1 > 100){ Tienda.mensaje(this, "Los descuentos deben ser menores
+		 * al 100%"); textDesc1.requestFocus(); textDesc1.selectAll(); } if(p2 >
+		 * 100){ Tienda.mensaje(this, "Los descuentos deben ser menores al
+		 * 100%"); textDesc2.requestFocus(); textDesc2.selectAll(); } if(p3 >
+		 * 100){ Tienda.mensaje(this, "Los descuentos deben ser menores al
+		 * 100%"); textDesc3.requestFocus(); textDesc3.selectAll(); } if(p4 >
+		 * 100){ Tienda.mensaje(this, "Los descuentos deben ser menores al
+		 * 100%"); textDesc4.requestFocus(); textDesc4.selectAll(); }
+		 **/
 	}
 }

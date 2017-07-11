@@ -68,7 +68,7 @@ public class Modificar extends JDialog implements ActionListener {
 		 * EmptyBorder(5, 5, 5, 5)); setContentPane(contentPane);
 		 * contentPane.setLayout(null);
 		 **/
-		//setModal(true);
+		// setModal(true);
 		setResizable(false);
 		setTitle("Modificar ");
 		setBounds(100, 100, 450, 300);
@@ -116,7 +116,7 @@ public class Modificar extends JDialog implements ActionListener {
 					Tienda.mensaje(textPrecio, "Ingresa Solo Numeros");
 					Tienda.focusSelectAll(textPrecio);
 
-				}else if( Character.isWhitespace(c)){
+				} else if (Character.isWhitespace(c)) {
 					Tienda.mensaje(textFondo, "Cuidado con espacios en blanco");
 					Tienda.focusSelectAll(textPrecio);
 				}
@@ -143,7 +143,7 @@ public class Modificar extends JDialog implements ActionListener {
 					Tienda.mensaje(textAncho, "Ingresa Solo Numeros");
 					Tienda.focusSelectAll(textAncho);
 
-				}else if( Character.isWhitespace(c)){
+				} else if (Character.isWhitespace(c)) {
 					Tienda.mensaje(textFondo, "Cuidado con espacios en blanco");
 					Tienda.focusSelectAll(textAncho);
 				}
@@ -165,11 +165,11 @@ public class Modificar extends JDialog implements ActionListener {
 					Tienda.mensaje(textAlto, "Ingresa Solo Numeros");
 					Tienda.focusSelectAll(textAlto);
 
-				}else if( Character.isWhitespace(c)){
+				} else if (Character.isWhitespace(c)) {
 					Tienda.mensaje(textFondo, "Cuidado con espacios en blanco");
 					Tienda.focusSelectAll(textAlto);
 				}
-				
+
 			}
 		});
 		textAlto.setBounds(187, 165, 160, 20);
@@ -187,7 +187,7 @@ public class Modificar extends JDialog implements ActionListener {
 
 					Tienda.mensaje(textFondo, "Ingresa Solo Numeros");
 					Tienda.focusSelectAll(textFondo);
-				} else if( Character.isWhitespace(c)){
+				} else if (Character.isWhitespace(c)) {
 					Tienda.mensaje(textFondo, "Cuidado con espacios en blanco");
 					Tienda.focusSelectAll(textFondo);
 				}
@@ -206,7 +206,7 @@ public class Modificar extends JDialog implements ActionListener {
 		btnGrabar_1.setBounds(73, 237, 89, 23);
 		btnGrabar_1.addActionListener(this);
 		getContentPane().add(btnGrabar_1);
-		
+
 		mostrarDatosPorDefecto();
 
 	}
@@ -228,84 +228,87 @@ public class Modificar extends JDialog implements ActionListener {
 		int cod = cboCodigo.getSelectedIndex();
 		switch (cod) {
 		case 0:
-			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo0, 
-					Tienda.precio0, Tienda.ancho0, Tienda.alto0, Tienda.fondo0);
+			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo0, Tienda.precio0,
+					Tienda.ancho0, Tienda.alto0, Tienda.fondo0);
 			/**
-			textModelo.setText(Tienda.modelo0);
-			textPrecio.setText(Tienda.precio0 +"");
-			textAncho.setText(Tienda.ancho0 +"");
-			textAlto.setText(Tienda.alto0 +"");
-			textFondo.setText(Tienda.fondo0 +"");**/
+			 * textModelo.setText(Tienda.modelo0);
+			 * textPrecio.setText(Tienda.precio0 +"");
+			 * textAncho.setText(Tienda.ancho0 +"");
+			 * textAlto.setText(Tienda.alto0 +"");
+			 * textFondo.setText(Tienda.fondo0 +"");
+			 **/
 			break;
-		case 1:	
-			
-		Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo1,
-					Tienda.precio1, Tienda.ancho1, Tienda.alto1, Tienda.fondo1);
-			
-		/**
-			textModelo.setText(Tienda.modelo1);
-			textPrecio.setText(Tienda.precio1 +"");
-			textAncho.setText(Tienda.ancho1 +"");
-			textAlto.setText(Tienda.alto1 +"");
-			textFondo.setText(Tienda.fondo1 +"");**/
+		case 1:
+
+			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo1, Tienda.precio1,
+					Tienda.ancho1, Tienda.alto1, Tienda.fondo1);
+
+			/**
+			 * textModelo.setText(Tienda.modelo1);
+			 * textPrecio.setText(Tienda.precio1 +"");
+			 * textAncho.setText(Tienda.ancho1 +"");
+			 * textAlto.setText(Tienda.alto1 +"");
+			 * textFondo.setText(Tienda.fondo1 +"");
+			 **/
 			break;
 		case 2:
-			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo2,
-					Tienda.precio2, Tienda.ancho2, Tienda.alto2, Tienda.fondo2);
-			/**	
-			textModelo.setText(Tienda.modelo2);
-			textPrecio.setText(Tienda.precio2 +"");
-			textAncho.setText(Tienda.ancho2 +"");
-			textAlto.setText(Tienda.alto2 +"");
-			textFondo.setText(Tienda.fondo2 +"");**/
+			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo2, Tienda.precio2,
+					Tienda.ancho2, Tienda.alto2, Tienda.fondo2);
+			/**
+			 * textModelo.setText(Tienda.modelo2);
+			 * textPrecio.setText(Tienda.precio2 +"");
+			 * textAncho.setText(Tienda.ancho2 +"");
+			 * textAlto.setText(Tienda.alto2 +"");
+			 * textFondo.setText(Tienda.fondo2 +"");
+			 **/
 			break;
 		case 3:
-			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo3,
-					Tienda.precio3, Tienda.ancho3, Tienda.alto3, Tienda.fondo3);
+			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo3, Tienda.precio3,
+					Tienda.ancho3, Tienda.alto3, Tienda.fondo3);
 			/**
-			textModelo.setText(Tienda.modelo3);
-			textPrecio.setText(Tienda.precio3 +"");
-			textAncho.setText(Tienda.ancho3 +"");
-			textAlto.setText(Tienda.alto3 +"");
-			textFondo.setText(Tienda.fondo3 +"");**/
+			 * textModelo.setText(Tienda.modelo3);
+			 * textPrecio.setText(Tienda.precio3 +"");
+			 * textAncho.setText(Tienda.ancho3 +"");
+			 * textAlto.setText(Tienda.alto3 +"");
+			 * textFondo.setText(Tienda.fondo3 +"");
+			 **/
 			break;
 		default:
-			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo4,
-					Tienda.precio4, Tienda.ancho4, Tienda.alto4, Tienda.fondo4);
+			Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo4, Tienda.precio4,
+					Tienda.ancho4, Tienda.alto4, Tienda.fondo4);
 			/**
-			textModelo.setText(Tienda.modelo4);
-			textPrecio.setText(Tienda.precio4 +"");
-			textAncho.setText(Tienda.ancho4 +"");
-			textAlto.setText(Tienda.alto4 +"");
-			textFondo.setText(Tienda.fondo4 +"");**/
+			 * textModelo.setText(Tienda.modelo4);
+			 * textPrecio.setText(Tienda.precio4 +"");
+			 * textAncho.setText(Tienda.ancho4 +"");
+			 * textAlto.setText(Tienda.alto4 +"");
+			 * textFondo.setText(Tienda.fondo4 +"");
+			 **/
 		}
 
 	}
-	
-	
-	
+
 	public void actionPerformedbtnGrabar_1(ActionEvent e) {
-		try{
-		getModificaciones();
-		//Variable para validación de texto
-		String mods = textModelo.getText();
-		
-		if(mods.isEmpty() || mods.length() < 1){
-			Tienda.mensaje(textModelo, "Porfavor ingrese algún modelo");
-			Tienda.focusSelectAll(textModelo);
+		try {
+			getModificaciones();
+			// Variable para validación de texto
+			String mods = textModelo.getText();
+
+			if (mods.isEmpty() || mods.length() < 1) {
+				Tienda.mensaje(textModelo, "Porfavor ingrese algún modelo");
+				Tienda.focusSelectAll(textModelo);
+			} else {
+				Tienda.mensaje(this, "Grabado completo");
+			}
+		} catch (Exception o) {
+			Tienda.mensaje(this, "Esas cantidades deben ser n\u00fameros enteros");
+
 		}
-		
-		}catch (Exception o){
-			Tienda.mensaje(this,"Esas cantidades deben ser n\u00fameros enteros");
-			
-		}
-	
+
 	}
 
-	
 	private void getModificaciones() {
 		int cod = cboCodigo.getSelectedIndex();
-		
+
 		switch (cod) {
 		case 0:
 			Tienda.modelo0 = textModelo.getText();
@@ -343,24 +346,22 @@ public class Modificar extends JDialog implements ActionListener {
 			Tienda.alto4 = Tienda.getDouble(textAlto);
 			Tienda.fondo4 = Tienda.getDouble(textFondo);
 		}
-		
+
 	}
 
 	public void actionPerformedbtnCerrar(ActionEvent e) {
 		dispose();
 	}
-	
-	public void mostrarDatosPorDefecto(){
-		Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo0,
-				Tienda.precio0, Tienda.ancho0, Tienda.alto0, Tienda.fondo0);
+
+	public void mostrarDatosPorDefecto() {
+		Tienda.SetDatos(textModelo, textPrecio, textAncho, textAlto, textFondo, Tienda.modelo0, Tienda.precio0,
+				Tienda.ancho0, Tienda.alto0, Tienda.fondo0);
 		/**
-		textModelo.setText(Tienda.modelo0);
-		textPrecio.setText(Tienda.precio0 +"");
-		textAncho.setText(Tienda.ancho0 +"");
-		textAlto.setText(Tienda.alto0 +"");
-		textFondo.setText(Tienda.fondo0 +"");		**/
-	}	
-	
-	
-	
+		 * textModelo.setText(Tienda.modelo0); textPrecio.setText(Tienda.precio0
+		 * +""); textAncho.setText(Tienda.ancho0 +"");
+		 * textAlto.setText(Tienda.alto0 +""); textFondo.setText(Tienda.fondo0
+		 * +"");
+		 **/
+	}
+
 }

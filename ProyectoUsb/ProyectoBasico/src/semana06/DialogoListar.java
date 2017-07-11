@@ -1,5 +1,6 @@
 package semana06;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,10 +17,10 @@ public class DialogoListar extends JDialog implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JScrollPane scrollPane;
 	private static JTextArea txtS;
 	private JButton btnCerrar;
 	private JButton btnListar;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -48,16 +49,21 @@ public class DialogoListar extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public DialogoListar() {
+		getContentPane().setFont(new Font("Castellar", getContentPane().getFont().getStyle() & ~Font.BOLD & ~Font.ITALIC, getContentPane().getFont().getSize() + 1));
+		getContentPane().setForeground(Color.LIGHT_GRAY);
 		setResizable(false);
 		setTitle("Listar");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
+		scrollPane.setViewportBorder(UIManager.getBorder("TableHeader.cellBorder"));
 		scrollPane.setBounds(10, 11, 424, 212);
 		getContentPane().add(scrollPane);
 
 		txtS = new JTextArea();
+		txtS.setForeground(Color.GREEN);
+		txtS.setBackground(Color.BLACK);
 		txtS.setEditable(false);
 		txtS.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		scrollPane.setViewportView(txtS);

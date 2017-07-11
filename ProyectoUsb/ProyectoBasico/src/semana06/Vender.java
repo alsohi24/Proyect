@@ -77,12 +77,12 @@ public class Vender extends JDialog implements ActionListener {
 		textPrecio.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent arg0) {
 				char c = arg0.getKeyChar();
-				
-				if(Character.isLetter(c)){
+
+				if (Character.isLetter(c)) {
 					arg0.consume();
-					Tienda.mensaje(textPrecio,"Ingrese Solo N\u00fameros");
+					Tienda.mensaje(textPrecio, "Ingrese Solo N\u00fameros");
 					Tienda.focusSelectAll(textPrecio);
-					
+
 				}
 			}
 		});
@@ -92,14 +92,14 @@ public class Vender extends JDialog implements ActionListener {
 
 		textCantidad = new JTextField();
 		textCantidad.addKeyListener(new KeyAdapter() {
-			
+
 			public void keyPressed(KeyEvent arg0) {
 				char c = arg0.getKeyChar();
-				if(Character.isLetter(c)){
+				if (Character.isLetter(c)) {
 					arg0.consume();
-					
-					Tienda.mensaje(textCantidad,"Ingrese Solo N\u00fameros");
-		              Tienda.focusSelectAll(textCantidad);
+
+					Tienda.mensaje(textCantidad, "Ingrese Solo N\u00fameros");
+					Tienda.focusSelectAll(textCantidad);
 				}
 			}
 		});
@@ -150,7 +150,7 @@ public class Vender extends JDialog implements ActionListener {
 	}
 
 	public void actionPerformedComboBox(ActionEvent arg0) {
-		 int cod = getMarca();
+		int cod = getMarca();
 
 		switch (cod) {
 		case 0:
@@ -176,27 +176,37 @@ public class Vender extends JDialog implements ActionListener {
 	}
 
 	int totV;
+
 	public void actionPerformedbtnVender(ActionEvent arg0) {
 		double icom, ides, ipag;
 		int can, mar;
 		totV++;
-		mar = getMarca();
-		can = getctidad();
-		icom = calcularimportecompra(mar,can);
-		contAcum(mar, can , icom);
-		ides = calculardescuento(can, icom);
-		ipag = calcularpagar(icom, ides);
-		mostrarresultados(icom, ides, ipag);
-		clientePremiado();
+		try {
+			mar = getMarca();
+			can = getCantidad();
+			if (can < 0) {
+				Tienda.mensaje(this, "Las cantidades deben ser positivas");
+			} else {
+				icom = calcularimportecompra(mar, can);
+				contAcum(mar, can, icom);
+				ides = calculardescuento(can, icom);
+				ipag = calcularpagar(icom, ides);
+				mostrarresultados(icom, ides, ipag);
+				clientePremiado();
+			}
+		} catch (Exception ç) {
+			Tienda.mensaje(this, "Por favor esas cantidades deben ser n\u00fameros enteros");
+
+		}
 
 	}
 
-	int getctidad() {		
+	int getCantidad() {
 		return Integer.parseInt(textCantidad.getText());
 
 	}
-	
-	int getMarca(){
+
+	int getMarca() {
 		return comboBox.getSelectedIndex();
 	}
 
@@ -206,13 +216,13 @@ public class Vender extends JDialog implements ActionListener {
 			return Tienda.precio0 * c;
 		case 1:
 			return Tienda.precio1 * c;
-			
+
 		case 2:
 			return Tienda.precio2 * c;
-			
+
 		case 3:
 			return Tienda.precio3 * c;
-			
+
 		default:
 			return Tienda.precio4 * c;
 		}
@@ -262,14 +272,13 @@ public class Vender extends JDialog implements ActionListener {
 		return ic - id;
 	}
 
-	void mostrarresultados(double ic, double id,double ip) {
+	void mostrarresultados(double ic, double id, double ip) {
 
 		txtS.setText("  Su boleta:" + "\n\n");
 		Tienda.Imprimir(txtS, "Importe Compra      :	" + ic);
 		Tienda.Imprimir(txtS, "Importe Descuento :	" + id);
 		Tienda.Imprimir(txtS, "Importe Pagar          :	" + ip);
 		Tienda.Imprimir(txtS, "Obsequio                  :	" + Tienda.obsequio);
-		
 
 	}
 

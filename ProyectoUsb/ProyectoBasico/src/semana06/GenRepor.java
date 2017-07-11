@@ -104,15 +104,15 @@ public class GenRepor extends JDialog implements ActionListener {
 	public static double icomAcu1, icomAcu2, icomAcu3, icomAcu4, icomAcu5,
 						icomGen,
 
-			promP,
-			promAn,
-			promAl,
-			promFon;
+						promP,
+						promAn,
+						promAl,
+						promFon;
 	int totM;
 
 	public void actionPerformedcomboBox(ActionEvent e) {
 		int cod = comboBox.getSelectedIndex();
-
+		actualizarPromedios();
 		switch (cod) {
 		case 0:
 			totalDeVentas();
@@ -120,12 +120,10 @@ public class GenRepor extends JDialog implements ActionListener {
 		case 1:
 			malVenOp();
 			break;
-		case 2:
-			actualizarPromedios();
+		case 2:			
 			menAlpromP();
 			break;
 		case 3:
-			actualizarPromedios();
 			mayAlpromP();
 			break;
 		default:
@@ -141,7 +139,10 @@ public class GenRepor extends JDialog implements ActionListener {
 		Tienda.imprimirVentas(txtS, Tienda.codigo2, Tienda.modelo2, totVen3, totMaV3, icomAcu3);
 		Tienda.imprimirVentas(txtS, Tienda.codigo3, Tienda.modelo3, totVen4, totMaV4, icomAcu4);
 		Tienda.imprimirVentas(txtS, Tienda.codigo4, Tienda.modelo4, totVen5, totMaV5, icomAcu5);
-		icomGen = (icomAcu1 + icomAcu2 + icomAcu3 + icomAcu4 + icomAcu5);
+		
+		//Aqui se reutilizo la clase ya que cumplian una funcion muy parecida
+		icomGen = Tienda.promediosG(icomAcu1, icomAcu2, icomAcu3, icomAcu4, icomAcu5)*5;
+		
 		Tienda.Imprimir(txtS, "Importe total acumulado general :  " + icomGen);
 		
 		
@@ -189,8 +190,7 @@ public class GenRepor extends JDialog implements ActionListener {
 
 	void mayAlpromP() {
 		int conMal = 0;
-		txtS.setText("     " + "Precios mayores al promedio" + "\n\n");
-		
+		txtS.setText("     " + "Precios mayores al promedio" + "\n\n");		
 		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo0, Tienda.precio0, conMal);
 		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo1, Tienda.precio1, conMal);
 		conMal = Tienda.mayorAlProm(txtS, promP, Tienda.modelo2, Tienda.precio2, conMal);
@@ -223,7 +223,7 @@ public class GenRepor extends JDialog implements ActionListener {
 
 	void menAlpromP() {
 		int conMal = 0; 
-		txtS.setText("     " + "Precios menores al promPedio" + "\n\n");
+		txtS.setText("     " + "Precios menores al promedio" + "\n\n");
 		conMal = Tienda.menorAlProm(txtS, promP, Tienda.modelo0, Tienda.precio0, conMal);
 		conMal = Tienda.menorAlProm(txtS, promP, Tienda.modelo1, Tienda.precio1, conMal);
 		conMal = Tienda.menorAlProm(txtS, promP, Tienda.modelo2, Tienda.precio2, conMal);
